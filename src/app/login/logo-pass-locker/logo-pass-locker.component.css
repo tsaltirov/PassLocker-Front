@@ -1,0 +1,21 @@
+
+
+.fondo {
+    display: flex;
+}
+
+.fondo-logo{
+    flex-basis: 50vw;
+    height: 100vh;
+    align-content: center;
+}
+
+.img-logo {
+    width: 300px;
+}
+
+.logo-dividor {
+    flex-basis: 50vw;
+    background-color: #04b2d9;
+    height: 100vh;
+}
