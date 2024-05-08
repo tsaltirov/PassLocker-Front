@@ -10,8 +10,16 @@
     align-content: center;
 }
 
-.img-logo {
-    width: 300px;
+img.img-logo {
+    width: 400px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.logo-h2{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
 }
 
 .logo-dividor {
