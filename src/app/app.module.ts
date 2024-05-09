@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LogoPassLockerComponent } from './login/logo-pass-locker/logo-pass-locker.component';
+import { FormularioLoginComponent } from './login/formulario-login/formulario-login.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { LogoPassLockerComponent } from './login/logo-pass-locker/logo-pass-lock
     AppComponent,
     LoginComponent,
     LogoPassLockerComponent,
+    FormularioLoginComponent,
   ],
   imports: [
     BrowserModule,

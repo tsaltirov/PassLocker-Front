@@ -26,4 +26,7 @@ img.img-logo {
     flex-basis: 50vw;
     background-color: #04b2d9;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

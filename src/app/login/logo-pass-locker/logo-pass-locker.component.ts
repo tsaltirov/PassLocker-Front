@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './logo-pass-locker.component.css'
 })
 export class LogoPassLockerComponent {
-
+  
 }
