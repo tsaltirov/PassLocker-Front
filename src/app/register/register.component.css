@@ -1,8 +1,8 @@
-section.completo {
+.register {
     display: flex;
 }
 
-.logo-dividor {
+.divisor-form {
     display: flex;
     width: 50vw;
     flex-basis: 50vw;
@@ -11,4 +11,3 @@ section.completo {
     justify-content: center;
     align-items: center;
 }
-
