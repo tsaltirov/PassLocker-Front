@@ -9,7 +9,9 @@ import { FormularioLoginComponent } from './login/formulario-login/formulario-lo
 import { FondoComponent } from './login/fondo/fondo.component';
 import { RegisterComponent } from './register/register.component';
 import { FormRegisterComponent } from './register/form-register/form-register.component';
-
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { FormRegisterComponent } from './register/form-register/form-register.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,19 +3,38 @@
         <h2>Welcome!</h2>
         <p>Already have an account? <a class="vinculo-register" routerLink="/login">login</a></p>
     </div>
-    <form action="">
+    <form (ngSubmit)="sendValues()">
         <label for="email">Email</label><br>
-        <input class="controls" type="email"><br>
+        <input class="controls" type="email" [(ngModel)] = 'email' name="resgiteremail" required><br>
 
-        <label for="Username">Username</label><br>
-        <input class="controls" type="text"><br>
+        <label for="fullname">FullName</label><br>
+        <input class="controls" type="text" [(ngModel)] = 'fullName' name="fullname" required><br>
 
         <label for="password">Password</label><br>
-        <input class="controls" type="password"><br>
+        <input class="controls" type="password" [(ngModel)] = 'password' name ="password" required ><br>
 
         <label for="password">Confirm Password</label><br>
-        <input class="controls" type="password"><br>
+        <input class="controls" type="password" [(ngModel)] = 'confirmPassword' name="confirmPassword" required><br>
 
-        <input class="buttons" type="submit" value = "Register">
+        <div class="checkbox">
+            <p>Usertype</p>
+            <ul>
+                <li>
+                    <label><input type="radio" name="usertype" id="checkbox1" value="Individual" [(ngModel)]="userType">Individual</label>
+                </li>
+                <li>
+                    <label><input type="radio" name="usertype" id="checkbox2" value="Professional" [(ngModel)]="userType">Professional</label>
+                </li>
+                <li>
+                    <label><input type="radio" name="usertype" id="checkbox3" value="Pyme" [(ngModel)]="userType">Pyme</label>
+                </li>
+                <li>
+                    <label><input type="radio" name="usertype" id="checkbox4" value="Organization" [(ngModel)]="userType">Organization</label>
+                </li>
+            </ul>
+        </div>
+
+        <input class="buttons" type="button" value="Send"  (click)="sendValues()">
     </form>  
 </section>
+

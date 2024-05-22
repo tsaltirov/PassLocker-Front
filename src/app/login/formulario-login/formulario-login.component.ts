@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './formulario-login.component.css'
 })
 export class FormularioLoginComponent {
+  email: string;
+  password: string;
+
+  constructor(){
+    this.email = ''
+    this.password = ''
+  }
+
   
 }
