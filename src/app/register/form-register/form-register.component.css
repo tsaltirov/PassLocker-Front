@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 17px;
+}
+
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    height: 500px;
+    background-color: #04b2d9;
+    color: white;
+    margin: auto;
+    padding: 20px 15px;
+}
+
+.register-welcome {
+    justify-content: center;
+    padding-bottom: 70px;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+.checkbox {
+    margin: 1em 0;
+}
+
+.checkbox ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.controls {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    margin-top: 0.4em;
+} 
+
+.buttons {
+    color: white;
+    background-color: #0367a6;
+    width: 60%;
+    height: 40px;
+    border: 1px solid #0367a6;
+    margin-top: 38px;
+    margin-bottom: 15px;
+}
+
+a.vinculo-register {
+    color: white;
+}

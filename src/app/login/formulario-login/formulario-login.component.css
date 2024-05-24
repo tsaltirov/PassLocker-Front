@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 17px;
+}
+
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    height: 500px;
+    color: white;
+    margin: auto;
+    padding: 20px 15px;
+}
+
+.login-welcome {
+    justify-content: center;
+    padding-bottom: 70px;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+.controls {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    margin-top: 0.4em;
+} 
+
+.buttons {
+    color: white;
+    background-color: #0367a6;
+    width: 60%;
+    height: 40px;
+    border: 1px solid #0367a6;
+    margin-top: 38px;
+    margin-bottom: 15px;
+}
+
+a.vinculo-login {
+    color: white;
+}
+
+
+
+

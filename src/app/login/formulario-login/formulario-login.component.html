@@ -1,0 +1,16 @@
+<section class="form-login">
+    <div class="login-welcome">
+        <h2>Welcome!</h2>
+        <p>Don't have an account yet? <a class="vinculo-login" routerLink="/singup">Sing Up</a></p>
+    </div>
+    <form action="">
+        <label for="email">Email</label><br>
+        <input class="controls" type="email" [(ngModel)] = 'email'><br>
+
+        <label for="Password">Password</label><br>
+        <input class="controls" type="password" [(ngModel)] = 'password'><br>
+
+        <input class="buttons" type="submit" value = "Login">
+        <p><a class="vinculo-login" href="">Forgot Password?</a></p>
+    </form>  
+</section>

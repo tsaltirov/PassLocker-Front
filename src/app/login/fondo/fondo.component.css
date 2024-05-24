@@ -1,0 +1,28 @@
+.fondo-logo{
+    width: 50vw;
+    flex-basis: 50vw;
+    height: 100vh;
+    align-content: center;
+}
+
+img.img-logo {
+    width: 400px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.logo-h2{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.logo-dividor {
+    flex-basis: 50vw;
+    background-color: #04b2d9;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

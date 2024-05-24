@@ -1,0 +1,14 @@
+section.completo {
+    display: flex;
+}
+
+.logo-dividor {
+    display: flex;
+    width: 50vw;
+    flex-basis: 50vw;
+    background-color: #04b2d9;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
