@@ -30,7 +30,7 @@ export class FormRegisterComponent {
     if (this.password === this.confirmPassword){
       const user = {
         email: this.email,
-        fullname: this.fullName,
+        fullName: this.fullName,
         password: this.password,
         userType: this.userType
       }

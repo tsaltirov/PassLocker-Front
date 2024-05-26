@@ -11,4 +11,5 @@ export class RegisterService {
   registerUser(user: any) {
     return axios.post(this.apiUrl, user);
   }
+  
 }
