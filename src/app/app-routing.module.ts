@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisterVerifyComponent } from './register-verify/register-verify.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'singup',
     component: RegisterComponent
+  },
+  {
+    path: 'registerverify',
+    component: RegisterVerifyComponent
   }
   
 ];

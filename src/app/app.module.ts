@@ -12,6 +12,7 @@ import { FormRegisterComponent } from './register/form-register/form-register.co
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterVerifyComponent } from './register-verify/register-verify.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     FondoComponent,
     RegisterComponent,
     FormRegisterComponent,
+    RegisterVerifyComponent,
   ],
   imports: [
     BrowserModule,

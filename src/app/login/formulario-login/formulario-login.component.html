@@ -3,14 +3,14 @@
         <h2>Welcome!</h2>
         <p>Don't have an account yet? <a class="vinculo-login" routerLink="/singup">Sing Up</a></p>
     </div>
-    <form action="">
+    <form (ngSubmit)="sendValuesLogin()">
         <label for="email">Email</label><br>
-        <input class="controls" type="email" [(ngModel)] = 'email'><br>
+        <input class="controls" type="email" [(ngModel)] = 'email' name="email"><br>
 
         <label for="Password">Password</label><br>
-        <input class="controls" type="password" [(ngModel)] = 'password'><br>
+        <input class="controls" type="password" [(ngModel)] = 'password' name="Password"><br>
 
-        <input class="buttons" type="submit" value = "Login">
+        <input class="buttons" type="button" (click)="sendValuesLogin()" value = "Login">
         <p><a class="vinculo-login" href="">Forgot Password?</a></p>
     </form>  
 </section>
