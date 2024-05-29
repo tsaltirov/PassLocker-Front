@@ -18,7 +18,8 @@ export class RegisterVerifyComponent implements OnInit {
   public email: string;
   public password: string;
   public fullName: string;
-  public userType: string;
+  public userType: string;}
+
   constructor(private _route: ActivatedRoute, private router: Router, private _register: RegisterService) {
     this.email = '';
     this.password = '';
@@ -70,9 +71,5 @@ export class RegisterVerifyComponent implements OnInit {
       .catch(error => {
         console.error('Error al registrar el usuario', error);
       });
-
-
   }
-
-
 }
