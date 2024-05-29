@@ -5,7 +5,7 @@
     </div>
     <form (ngSubmit)="sendValues()">
         <label for="email">Email</label><br>
-        <input class="controls" type="email" [(ngModel)] = 'email' name="resgiteremail" required><br>
+        <input class="controls" type="email" [(ngModel)] = 'email' name="email"  required><br>
 
         <label for="fullname">FullName</label><br>
         <input class="controls" type="text" [(ngModel)] = 'fullName' name="fullname" required><br>
@@ -20,7 +20,7 @@
             <p>Usertype</p>
             <ul>
                 <li>
-                    <label><input type="radio" name="usertype" id="checkbox1" value="Individual" [(ngModel)]="userType">Individual</label>
+                    <label><input type="radio" name="usertype" id="checkbox1" value="Individual" [(ngModel)]="userType" >Individual</label>
                 </li>
                 <li>
                     <label><input type="radio" name="usertype" id="checkbox2" value="Professional" [(ngModel)]="userType">Professional</label>
