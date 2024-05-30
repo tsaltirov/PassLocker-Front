@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { RegisterService } from '../register/form-register/services/register.service';
 import { FormRegisterComponent } from '../register/form-register/form-register.component';
 import axios from 'axios';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 @Injectable()
 @Component({
@@ -19,37 +19,31 @@ export class RegisterVerifyComponent implements OnInit {
   public password: string;
   public fullName: string;
   public userType: string;
-  constructor(private _route: ActivatedRoute, private router: Router, private _register: RegisterService) {
+  constructor(private _route: ActivatedRoute, private router: Router) {
     this.email = '';
     this.password = '';
     this.fullName = '';
     this.userType = '';
-
   }
 
   ngOnInit(): void {
-
-
-
     this.email = this._route.snapshot.queryParams['email'];
     this.password = this._route.snapshot.queryParams['password'];
     this.fullName = this._route.snapshot.queryParams['fullName'];
     this.userType = this._route.snapshot.queryParams['userType'];
 
-    console.log(this.email);
-    console.log(this.password);
-    console.log(this.fullName);
-    console.log(this.userType);
-
-
-    axios.post('http://localhost:3000/api/auth/register', {
+    const user = {
       email: this.email,
       fullName: this.fullName,
       password: this.password,
       userType: this.userType
-    })
+    }
 
-      .then(response => {
+
+    axios.post('http://localhost:3000/api/auth/register-account', user)
+
+      .then(response=> {
+        this.router.navigate(['/login']);
         Swal.fire({
           title: "Usuario registrado con éxito!",
           text: "Ya puede loguear en su cuenta",
@@ -59,20 +53,13 @@ export class RegisterVerifyComponent implements OnInit {
           imageAlt: "Custom image",
           showDenyButton: false,
           showCancelButton: false,
-          confirmButtonText: "LOGIN",
+          confirmButtonText: "OK",
 
-        }).then((result) => {
-          if (result.isConfirmed)
-            this.router.navigate(['/login']);
         })
 
       })
       .catch(error => {
         console.error('Error al registrar el usuario', error);
       });
-
-
   }
-
-
 }
