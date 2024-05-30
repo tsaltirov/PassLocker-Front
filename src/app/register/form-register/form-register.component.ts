@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-register',
@@ -35,13 +36,32 @@ export class FormRegisterComponent {
         userType: this.userType
       }
 
-      axios.post('http://localhost:3000/api/auth/registerMail', user)
+      axios.post('http://localhost:3000/api/auth/request-register-account', user)
 
       .then(response => {
-        alert('Confirma tu cuenta en tu email');
+        if(response.data.message === 'Usuario ya registrado.')
+          {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "El usuario ya existe..."
+            });
+          }
+          else{
+
+          
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Correo Enviado con éxito!",
+          showConfirmButton: false,
+          timer: 2000
+        });
+      }
         console.log(response.data);
         
       })
+    
       .catch(error => {
         console.error('Error al registrar el usuario', error);
       });
