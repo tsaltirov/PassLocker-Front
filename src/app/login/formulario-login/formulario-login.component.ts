@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import axios from 'axios';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-formulario-login',
@@ -10,23 +10,18 @@ export class FormularioLoginComponent {
   email: string;
   password: string;
 
-  constructor(){
-    this.email = ''
-    this.password = ''
+  constructor(private authService: LoginService) {  // Inyecta el servicio
+    this.email = '';
+    this.password = '';
   }
 
- async sendValuesLogin(){
+  async sendValuesLogin() {
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', {
-        email: this.email,
-        password: this.password
-      });
-
-      console.log('Login:', response.data);
-
+      const data = await this.authService.login(this.email, this.password);
+      console.log('Login:', data);
     } catch (error) {
       console.error('Error al intentar logear', error);
     }
   }
-  }  
+}  
 
