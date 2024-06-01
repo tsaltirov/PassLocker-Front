@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterVerifyComponent } from './register-verify/register-verify.component';
+import { ForgotpasswordComponent } from './reset-password/forgotpassword/forgotpassword.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { RegisterVerifyComponent } from './register-verify/register-verify.compo
     RegisterComponent,
     FormRegisterComponent,
     RegisterVerifyComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,
