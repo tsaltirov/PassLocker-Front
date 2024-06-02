@@ -1,27 +1,25 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ForgotPasswordService {
-  private apiUrl = 'http://localhost:3000/api/auth/request-reset-password'
+export class ForgotpasswordService {
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  sendForgotPasswordEmail(email: string) {
-    try {
-      console.log(email)
-      // const headers = new HttpHeaders({
-      //   'Content-Type': 'application/json' // Set the Content-Type header
-      // });
-      const data = this.http.patch( this.apiUrl, { email });
-      console.log( data );
+  requestPasswordReset(email: string) {
+    return axios.patch('http://localhost:3000/api/auth/request-reset-password', {
+      email: email
+    });
+  }
 
-      return data;
-    } catch (error) {
-      throw error;
-    }
+  resetPassword(resetPasswordToken: string, password: string): Promise<any> {
+    const url = 'http://localhost:3000/api/auth/reset-password';
+    return axios.patch(url, { resetPasswordToken, password })
+      .then(response => response.data)
+      .catch(error => {
+        throw error;
+      });
   }
 }
