@@ -6,7 +6,8 @@ section.completo {
     display: flex;
     width: 50vw;
     flex-basis: 50vw;
-    background-color: #04b2d9;
+  
+    background: linear-gradient(to right, #04b2d9, #08809b);
     height: 100vh;
     justify-content: center;
     align-items: center;
