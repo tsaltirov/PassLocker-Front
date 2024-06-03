@@ -20,7 +20,9 @@ export class VerifyForgotpasswordComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.resetPasswordToken = this.route.snapshot.queryParamMap.get('resetPasswordToken') || '';
+    this.resetPasswordToken = this.route.snapshot.queryParamMap.get('token') || '';
+    
+    console.log(this.resetPasswordToken)
   }
 
   resetPassword() {
