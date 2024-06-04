@@ -15,6 +15,12 @@ export class FormRegisterComponent {
   password: string;
   confirmPassword:string;
   userType:string;
+
+  emailTouched: boolean = false;
+  fullNameTouched: boolean = false;
+  passwordTouched: boolean = false;
+  confirmPasswordTouched: boolean = false;
+  userTypeTouched: boolean = false;
   
   constructor(){
     this.email = ''
@@ -24,32 +30,92 @@ export class FormRegisterComponent {
     this.userType = ''
   }
 
+  
+  get emailValid() {
+    return this.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+  }
 
-  sendValues(){
-    console.log(this.email,this.fullName,this.password,this.confirmPassword,this.userType)
+  get emailRequired() {
+    return this.email !== '';
+  }
 
-    if (this.password === this.confirmPassword){
-      const user = {
-        email: this.email,
-        fullName: this.fullName,
-        password: this.password,
-        userType: this.userType
-      }
+  get emailFormatValid() {
+    return this.emailValid !== null;
+  }
 
-      axios.post('http://localhost:3000/api/auth/request-register-account', user)
+  get fullNameValid() {
+    return this.fullName !== '';
+  }
 
-      .then(response => {
-        if(response.data.message === 'Usuario ya registrado.')
-          {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "El usuario ya existe..."
-            });
-          }
-          else{
+  get fullNameRequired() {
+    return this.fullName !== '';
+  }
 
-          
+  get passwordValid() {
+    return this.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/);
+  }
+
+  get passwordRequired() {
+    return this.password !== '';
+  }
+
+  get passwordMinLength() {
+    return this.password.length >= 6;
+  }
+
+  get passwordPattern() {
+    return this.passwordValid !== null;
+  }
+
+  get confirmPasswordValid() {
+    return this.password === this.confirmPassword;
+  }
+
+  get confirmPasswordRequired() {
+    return this.confirmPassword !== '';
+  }
+
+  get passwordsMatch() {
+    return this.password === this.confirmPassword;
+  }
+
+  get userTypeValid() {
+    return this.userType !== '';
+  }
+
+  get userTypeRequired() {
+    return this.userType !== '';
+  }
+
+
+  async sendValues() {
+    this.emailTouched = true;
+    this.fullNameTouched = true;
+    this.passwordTouched = true;
+    this.confirmPasswordTouched = true;
+    this.userTypeTouched = true;
+
+    if (!this.emailValid || !this.fullNameValid || !this.passwordValid || !this.confirmPasswordValid || !this.userTypeValid) {
+      return;
+    }
+
+    const user = {
+      email: this.email,
+      fullName: this.fullName,
+      password: this.password,
+      userType: this.userType
+    };
+
+    try {
+      const response = await axios.post('http://localhost:3000/api/auth/request-register-account', user);
+
+      if (response.data.message === 'Usuario ya registrado.') {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "El usuario ya existe..."
+        });
+      } else {
         Swal.fire({
           position: "center",
           icon: "success",
@@ -58,16 +124,9 @@ export class FormRegisterComponent {
           timer: 2000
         });
       }
-        console.log(response.data);
-        
-      })
-    
-      .catch(error => {
-        console.error('Error al registrar el usuario', error);
-      });
-
-  } else {
-    console.log('Las contraseñas no coinciden');
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error al registrar el usuario', error);
+    }
   }
-}
 }

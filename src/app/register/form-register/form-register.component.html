@@ -5,17 +5,30 @@
     </div>
     <form (ngSubmit)="sendValues()">
         <label for="email">Email</label><br>
-        <input class="controls" type="email" [(ngModel)] = 'email' name="resgiteremail" required><br>
-
+        <input class="controls" type="email" [(ngModel)] = 'email' name="resgiteremail" required email><br>
+        <div *ngIf="emailTouched && !emailValid">
+            <div *ngIf="!emailRequired">El campo es obligatorio.</div>
+            <div *ngIf="!emailFormatValid">Email no válido.</div>
+          </div>
         <label for="fullname">FullName</label><br>
         <input class="controls" type="text" [(ngModel)] = 'fullName' name="fullname" required><br>
-
+        <div *ngIf="fullNameTouched && !fullNameValid">
+            <div *ngIf="!fullNameRequired">El campo es obligatorio.</div>
+          </div>
         <label for="password">Password</label><br>
         <input class="controls" type="password" [(ngModel)] = 'password' name ="password" required ><br>
-
+        <div *ngIf="passwordTouched && !passwordValid">
+            <div *ngIf="!passwordRequired">El campo es obligatorio.</div>
+            <div *ngIf="!passwordMinLength">La contraseña debe tener al menos 6 caracteres.</div>
+            <div *ngIf="!passwordPattern">La contraseña debe contener números, letras minúsculas y mayúsculas.</div>
+          </div>
         <label for="password">Confirm Password</label><br>
         <input class="controls" type="password" [(ngModel)] = 'confirmPassword' name="confirmPassword" required><br>
-
+        <div *ngIf="confirmPasswordTouched && !confirmPasswordValid">
+            <div *ngIf="!confirmPasswordRequired">El campo es obligatorio.</div>
+            <div *ngIf="!passwordsMatch">Las contraseñas no coinciden.</div>
+          </div>
+      
         <div class="checkbox">
             <p>Usertype</p>
             <ul>
@@ -32,6 +45,10 @@
                     <label><input type="radio" name="usertype" id="checkbox4" value="organization" [(ngModel)]="userType">Organization</label>
                 </li>
             </ul>
+            <div *ngIf="userTypeTouched && !userTypeValid">
+                <div *ngIf="!userTypeRequired">El campo es obligatorio.</div>
+              </div>
+           
         </div>
 
         
