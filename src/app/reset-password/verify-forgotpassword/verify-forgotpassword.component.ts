@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './verify-forgotpassword.component.html',
-  styleUrl: './verify-forgotpassword.component.css'
+  styleUrl: './verify-forgotpassword.component.css', providers:[ForgotpasswordService]
 })
 
 export class VerifyForgotpasswordComponent implements OnInit {
@@ -14,7 +14,7 @@ export class VerifyForgotpasswordComponent implements OnInit {
   password: string = '';
   confirmPassword: string = '';
   passwordMismatch: boolean = false;
-  
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,

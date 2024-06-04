@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterVerifyComponent } from './register-verify/register-verify.component';
 import { ForgotpasswordComponent } from './reset-password/forgotpassword/forgotpassword.component';
 import { VerifyForgotpasswordComponent } from './reset-password/verify-forgotpassword/verify-forgotpassword.component';
+import { CreateCodeComponent } from './login/create-code/create-code.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'reset-password',
     component: VerifyForgotpasswordComponent
+  },
+  {
+    path: 'verifyCode',
+    component: CreateCodeComponent
   }
   
 ];
