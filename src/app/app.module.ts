@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterVerifyComponent } from './register-verify/register-verify.component';
 import { ForgotpasswordComponent } from './reset-password/forgotpassword/forgotpassword.component';
 import { VerifyForgotpasswordComponent } from './reset-password/verify-forgotpassword/verify-forgotpassword.component';
+import { CreateCodeComponent } from './login/create-code/create-code.component';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { VerifyForgotpasswordComponent } from './reset-password/verify-forgotpas
     FormRegisterComponent,
     RegisterVerifyComponent,
     ForgotpasswordComponent,
-    VerifyForgotpasswordComponent
+    VerifyForgotpasswordComponent,
+    CreateCodeComponent
   ],
   imports: [
     BrowserModule,

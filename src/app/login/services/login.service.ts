@@ -13,10 +13,14 @@ export class LoginService {
   async login(email: string, password: string) {
     try {
       const response = await axios.post(`${this.apiUrl}/login`, { email, password });
+
+      const accessToken = response.data.accessToken;
+
       return response.data;
 
     } catch (error) {
       throw error;
     }
   }
+
 }
