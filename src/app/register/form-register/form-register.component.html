@@ -3,7 +3,7 @@
         <h2>Welcome!</h2>
         <p>Already have an account? <a class="vinculo-register" routerLink="/">login</a></p>
     </div>
-    <form (ngSubmit)="sendValues()">
+    <form class="form" (ngSubmit)="sendValues()">
         <label for="email">Email</label><br>
         <input class="controls" type="email" [(ngModel)] = 'email' name="resgiteremail" required email><br>
         <div *ngIf="emailTouched && !emailValid">
@@ -30,7 +30,7 @@
           </div>
       
         <div class="checkbox">
-            <p>Usertype</p>
+            <p class="usertype">Usertype</p>
             <ul>
                 <li>
                     <label><input type="radio" name="usertype" id="checkbox1" value="individual" [(ngModel)]="userType">Individual</label>
