@@ -21,6 +21,7 @@ export class FormularioLoginComponent {
 
   async sendValuesLogin() {
     try {
+      //Hago autentificación BBDD
       const data = await this.authService.login(this.email, this.password);
       console.log('Login:', data);
 
