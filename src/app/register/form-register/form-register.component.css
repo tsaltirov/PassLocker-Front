@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 17px;
+}
+
+.form-register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+  height: 550px;
+
+  margin: auto;
+  padding: 20px 15px;
+}
+
+.register-welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 70px;
+  align-items: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: #084e84;
+  font-size: 30px;
+}
+p {
+    color: #084e84;
+  font-size: 18px;
+}
+
+form {
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 3rem;
+}
+
+.checkbox {
+  margin: 1em 0;
+}
+
+.checkbox ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.controls {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 11px 10px;
+  margin-top: 0.4em;
+}
+
+.buttons {
+  color: white;
+  background-color: #0367a6;
+  width: 60%;
+  height: 40px;
+  border: 1px solid #0367a6;
+  margin-top: 38px;
+  margin-bottom: 15px;
+  border-radius: 0.5rem;
+}
+.usertype {
+  margin-bottom: 10px;
+}
+
+a.vinculo-register {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+form label {
+  font-size: 2rem;
+  line-height: 1.8rem;
+  color: #084e84;
+  margin-bottom: 0.8rem;
+  display: block;
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  border: 1px solid rgba(34, 14, 134, 0.3);
+
+  background:#c2ebf5;
+  padding: 1.6rem;
+  border-radius: 0.4rem;
+}
+
+form input:focus {
+  outline: 1px solid #3e169d;
+  
+}
+
+form input::placeholder {
+  color: rgba(73, 80, 87, 0.5);
+}
+
+form button {
+  margin-top: 3.2rem;
+  padding: 1.6rem;
+  width: 100%;
+  color: #e4eff7;
+  border-radius: 0.4rem;
+  border: none;
+  font-size: 2rem;
+  background-color: #02799d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #64cbeb;
+}

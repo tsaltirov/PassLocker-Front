@@ -1,0 +1,59 @@
+<section class="form-register">
+    <div class="register-welcome">
+        <h2>Welcome!</h2>
+        <p>Already have an account? <a class="vinculo-register" routerLink="/">login</a></p>
+    </div>
+    <form class="form" (ngSubmit)="sendValues()">
+        <label for="email">Email</label><br>
+        <input class="controls" type="email" [(ngModel)] = 'email' name="resgiteremail" required email><br>
+        <div *ngIf="emailTouched && !emailValid">
+            <div *ngIf="!emailRequired">El campo es obligatorio.</div>
+            <div *ngIf="!emailFormatValid">Email no válido.</div>
+          </div>
+        <label for="fullname">FullName</label><br>
+        <input class="controls" type="text" [(ngModel)] = 'fullName' name="fullname" required><br>
+        <div *ngIf="fullNameTouched && !fullNameValid">
+            <div *ngIf="!fullNameRequired">El campo es obligatorio.</div>
+          </div>
+        <label for="password">Password</label><br>
+        <input class="controls" type="password" [(ngModel)] = 'password' name ="password" required ><br>
+        <div *ngIf="passwordTouched && !passwordValid">
+            <div *ngIf="!passwordRequired">El campo es obligatorio.</div>
+            <div *ngIf="!passwordMinLength">La contraseña debe tener al menos 6 caracteres.</div>
+            <div *ngIf="!passwordPattern">La contraseña debe contener números, letras minúsculas y mayúsculas.</div>
+          </div>
+        <label for="password">Confirm Password</label><br>
+        <input class="controls" type="password" [(ngModel)] = 'confirmPassword' name="confirmPassword" required><br>
+        <div *ngIf="confirmPasswordTouched && !confirmPasswordValid">
+            <div *ngIf="!confirmPasswordRequired">El campo es obligatorio.</div>
+            <div *ngIf="!passwordsMatch">Las contraseñas no coinciden.</div>
+          </div>
+      
+        <div class="checkbox">
+            <p class="usertype">Usertype</p>
+            <ul>
+                <li>
+                    <label><input type="radio" name="usertype" id="checkbox1" value="individual" [(ngModel)]="userType">Individual</label>
+                </li>
+                <li>
+                    <label><input type="radio" name="usertype" id="checkbox2" value="professional" [(ngModel)]="userType">Professional</label>
+                </li>
+                <li>
+                    <label><input type="radio" name="usertype" id="checkbox3" value="pyme" [(ngModel)]="userType">Pyme</label>
+                </li>
+                <li>
+                    <label><input type="radio" name="usertype" id="checkbox4" value="organization" [(ngModel)]="userType">Organization</label>
+                </li>
+            </ul>
+            <div *ngIf="userTypeTouched && !userTypeValid">
+                <div *ngIf="!userTypeRequired">El campo es obligatorio.</div>
+              </div>
+           
+        </div>
+
+        
+        <button class="buttons" type="button" (click)="sendValues()">Send</button>
+
+    </form>  
+</section>
+
