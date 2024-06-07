@@ -26,6 +26,7 @@ export class FormularioLoginComponent {
 
       // Generar código de 6 cifras
       const code = (Math.floor(100000 + Math.random() * 900000)).toString();
+      
       localStorage.setItem('generatedCode', code);
       this.codeService.setGeneratedCode(code);
       console.log(code)
