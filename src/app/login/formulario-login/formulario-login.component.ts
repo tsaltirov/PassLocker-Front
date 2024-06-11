@@ -31,8 +31,8 @@ export class FormularioLoginComponent {
 
       // Generar código de 6 cifras
       const code = this.generateCode();
-      localStorage.setItem('generatedCode', code);
-      this.codeService.setGeneratedCode(code);
+      // localStorage.setItem('generatedCode', code);
+      this.codeService.setGeneratedCode(code, this.email);
       console.log(code);
       
 

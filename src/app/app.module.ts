@@ -17,6 +17,7 @@ import { ForgotpasswordComponent } from './reset-password/forgotpassword/forgotp
 import { VerifyForgotpasswordComponent } from './reset-password/verify-forgotpassword/verify-forgotpassword.component';
 import { CreateCodeComponent } from './login/create-code/create-code.component';
 import { PasswordCreatorComponent } from './password-creator/password-creator.component';
+import { PasswordManagerComponent } from './password-manager/password-manager.component';
 
 
 
@@ -34,6 +35,7 @@ import { PasswordCreatorComponent } from './password-creator/password-creator.co
     VerifyForgotpasswordComponent,
     CreateCodeComponent,
     PasswordCreatorComponent
+    PasswordManagerComponent
   ],
   imports: [
     BrowserModule,
