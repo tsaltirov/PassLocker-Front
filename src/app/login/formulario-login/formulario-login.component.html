@@ -3,14 +3,15 @@
         <h2>Bienvenido!</h2>
         <p>¿Aún no tienes una cuenta?  <a class="vinculo-login" routerLink="/singup">Regístrate</a></p>
     </div>
-    <form (ngSubmit)="sendValuesLogin()" (ngSubmit)="verifyAndSendCode()">
-        <label for="email">Correo</label><br>
+
+    <form (ngSubmit)="sendValuesLogin()">
+        <label for="email">Email</label><br>
         <input class="controls" type="email" [(ngModel)] = 'email' name="email"><br>
 
         <label for="Password">Contraseña</label><br>
         <input class="controls" type="password" [(ngModel)] = 'password' name="Password"><br>
 
-        <button class="buttons" type="button" (click)="sendValuesLogin()" (click)="verifyAndSendCode()">Iniciar sesión</button>
-        <p><a class="vinculo-login" routerLink="/forgot-password">¿Olvidaste tu contraseña?</a></p>
+        <button class="buttons" type="button" (click)="sendValuesLogin()">Login</button>
+        <p><a class="vinculo-login" routerLink="/forgot-password">Forgot Password?</a></p>
     </form>  
 </section>
