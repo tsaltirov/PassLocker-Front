@@ -34,7 +34,7 @@ import { PasswordManagerComponent } from './password-manager/password-manager.co
     ForgotpasswordComponent,
     VerifyForgotpasswordComponent,
     CreateCodeComponent,
-    PasswordCreatorComponent
+    PasswordCreatorComponent,
     PasswordManagerComponent
   ],
   imports: [
