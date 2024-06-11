@@ -40,7 +40,7 @@ const routes: Routes = [
     component: PasswordCreatorComponent
   },
   {
-    path: 'password-manage',
+    path: 'home',
     component: PasswordManagerComponent
   }
   

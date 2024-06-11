@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PasswordCreateService } from './services/password-create.service';
 
 @Component({
   selector: 'app-password-creator',
@@ -6,12 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./password-creator.component.css']
 })
 export class PasswordCreatorComponent {
-  service: string = '';
-  username: string = '';
+  userService: string = '';
+  userName: string = '';
   password: string = '';
   length: number = 9 ;
 
-  constructor() {
+  constructor(private passwordService: PasswordCreateService) { 
     this.generatePassword();
   }
 
@@ -28,9 +29,13 @@ export class PasswordCreatorComponent {
   }
 
   savePassword(): void {
-
-    console.log('Service:', this.service);
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
+    this.passwordService.savePassword(this.userService, this.userName, this.password)
+      .then(() => {
+        alert('Password saved successfully!');
+      })
+      .catch(error => {
+        alert('Error saving password. Please try again.');
+        console.error(error);
+      });
   }
 }

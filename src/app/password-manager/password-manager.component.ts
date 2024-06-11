@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { PasswordService } from './password.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-password-manager',
@@ -10,13 +11,13 @@ import { PasswordService } from './password.service';
 export class PasswordManagerComponent implements OnInit {
   passwords: any[] = [];
 
-  constructor(private passwordService: PasswordService) {}
+  constructor(private passwordService: PasswordService, private router: Router) {}
 
   ngOnInit(): void {
     this.passwords = this.passwordService.getPasswords();
   }
 
   addPassword(): void {
-    // Logic to add a new password
+    this.router.navigate(['/createPassword'])
   }
 }

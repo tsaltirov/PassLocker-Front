@@ -33,7 +33,6 @@ export class FormularioLoginComponent {
       const code = this.generateCode();
       // localStorage.setItem('generatedCode', code);
       this.codeService.setGeneratedCode(code, this.email);
-      console.log(code);
       
 
       this.router.navigate(['/verifyCode']);

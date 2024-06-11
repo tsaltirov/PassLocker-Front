@@ -41,9 +41,8 @@ export class CreateCodeComponent {
         showCancelButton: false,
         confirmButtonText: "OK",
     })
-      console.log('Los códigos coinciden');
       localStorage.setItem('generatedCode', this.generated);
-      this.router.navigate(['./singup'])
+      this.router.navigate(['./home'])
     } else {
       Swal.fire({
         icon: "error",
