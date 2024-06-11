@@ -1,28 +1,29 @@
 <section class="form-register">
     <div class="register-welcome">
-        <h2>Welcome!</h2>
-        <p>Already have an account? <a class="vinculo-register" routerLink="/">login</a></p>
+        <h2>
+            ¡Bienvenido!</h2>
+        <p>¿Ya tienes una cuenta? <a class="vinculo-register" routerLink="/"> Inicia sesión</a></p>
     </div>
     <form class="form" (ngSubmit)="sendValues()">
-        <label for="email">Email</label><br>
+        <label for="email">Correo Electrónico</label><br>
         <input class="controls" type="email" [(ngModel)] = 'email' name="resgiteremail" required email><br>
         <div *ngIf="emailTouched && !emailValid">
             <div *ngIf="!emailRequired">El campo es obligatorio.</div>
             <div *ngIf="!emailFormatValid">Email no válido.</div>
           </div>
-        <label for="fullname">FullName</label><br>
+        <label for="fullname">Nombre de usuario</label><br>
         <input class="controls" type="text" [(ngModel)] = 'fullName' name="fullname" required><br>
         <div *ngIf="fullNameTouched && !fullNameValid">
             <div *ngIf="!fullNameRequired">El campo es obligatorio.</div>
           </div>
-        <label for="password">Password</label><br>
+        <label for="password">Contraseña</label><br>
         <input class="controls" type="password" [(ngModel)] = 'password' name ="password" required ><br>
         <div *ngIf="passwordTouched && !passwordValid">
             <div *ngIf="!passwordRequired">El campo es obligatorio.</div>
             <div *ngIf="!passwordMinLength">La contraseña debe tener al menos 6 caracteres.</div>
             <div *ngIf="!passwordPattern">La contraseña debe contener números, letras minúsculas y mayúsculas.</div>
           </div>
-        <label for="password">Confirm Password</label><br>
+        <label for="password">Confirmar contraseña</label><br>
         <input class="controls" type="password" [(ngModel)] = 'confirmPassword' name="confirmPassword" required><br>
         <div *ngIf="confirmPasswordTouched && !confirmPasswordValid">
             <div *ngIf="!confirmPasswordRequired">El campo es obligatorio.</div>
@@ -30,19 +31,19 @@
           </div>
       
         <div class="checkbox">
-            <p class="usertype">Usertype</p>
+            <p class="usertype">Tipo de usuario</p>
             <ul>
                 <li>
                     <label><input type="radio" name="usertype" id="checkbox1" value="individual" [(ngModel)]="userType">Individual</label>
                 </li>
                 <li>
-                    <label><input type="radio" name="usertype" id="checkbox2" value="professional" [(ngModel)]="userType">Professional</label>
+                    <label><input type="radio" name="usertype" id="checkbox2" value="professional" [(ngModel)]="userType">Profesional</label>
                 </li>
                 <li>
                     <label><input type="radio" name="usertype" id="checkbox3" value="pyme" [(ngModel)]="userType">Pyme</label>
                 </li>
                 <li>
-                    <label><input type="radio" name="usertype" id="checkbox4" value="organization" [(ngModel)]="userType">Organization</label>
+                    <label><input type="radio" name="usertype" id="checkbox4" value="organization" [(ngModel)]="userType">Organización</label>
                 </li>
             </ul>
             <div *ngIf="userTypeTouched && !userTypeValid">
@@ -52,7 +53,7 @@
         </div>
 
         
-        <button class="buttons" type="button" (click)="sendValues()">Send</button>
+        <button class="buttons" type="button" (click)="sendValues()">Enviar</button>
 
     </form>  
 </section>
