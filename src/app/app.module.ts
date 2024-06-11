@@ -16,6 +16,7 @@ import { RegisterVerifyComponent } from './register-verify/register-verify.compo
 import { ForgotpasswordComponent } from './reset-password/forgotpassword/forgotpassword.component';
 import { VerifyForgotpasswordComponent } from './reset-password/verify-forgotpassword/verify-forgotpassword.component';
 import { CreateCodeComponent } from './login/create-code/create-code.component';
+import { PasswordCreatorComponent } from './password-creator/password-creator.component';
 import { PasswordManagerComponent } from './password-manager/password-manager.component';
 
 
@@ -33,6 +34,7 @@ import { PasswordManagerComponent } from './password-manager/password-manager.co
     ForgotpasswordComponent,
     VerifyForgotpasswordComponent,
     CreateCodeComponent,
+    PasswordCreatorComponent
     PasswordManagerComponent
   ],
   imports: [
