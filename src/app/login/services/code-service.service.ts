@@ -22,7 +22,6 @@ export class CodeServiceService {
     return this.email
   }
 
-
   resetall(){
     this.generatedCode='';
   }
