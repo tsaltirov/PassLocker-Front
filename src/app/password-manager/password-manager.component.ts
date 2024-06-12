@@ -9,12 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./password-manager.component.css']
 })
 export class PasswordManagerComponent implements OnInit {
+
   passwords: any[] = [];
 
-  constructor(private passwordService: PasswordService, private router: Router) {}
+  constructor(private passwordService: PasswordService, private router:Router) {}
 
   ngOnInit(): void {
-    this.passwords = this.passwordService.getPasswords();
+    this.loadPasswords();
+  }
+
+  async loadPasswords(): Promise<void> {
+    try {
+      this.passwords = await this.passwordService.getPasswords();
+    } catch (error) {
+      console.error('Error fetching passwords:', error);
+    }
   }
 
   addPassword(): void {

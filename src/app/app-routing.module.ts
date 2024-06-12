@@ -8,6 +8,7 @@ import { VerifyForgotpasswordComponent } from './reset-password/verify-forgotpas
 import { CreateCodeComponent } from './login/create-code/create-code.component';
 import { PasswordCreatorComponent } from './password-creator/password-creator.component';
 import { PasswordManagerComponent } from './password-manager/password-manager.component';
+import { ModifyPasswordComponent } from './modify-password/modify-password.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: PasswordManagerComponent
+  },
+  {
+    path: 'nuevaContraseña',
+    component: ModifyPasswordComponent
   }
   
 ];
