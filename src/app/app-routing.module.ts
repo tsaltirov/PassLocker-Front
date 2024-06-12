@@ -45,7 +45,7 @@ const routes: Routes = [
     component: PasswordManagerComponent
   },
   {
-    path: 'nuevaContraseña',
+    path: 'modificarContraseña/:id',
     component: ModifyPasswordComponent
   }
   

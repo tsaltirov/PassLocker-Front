@@ -29,4 +29,9 @@ export class PasswordManagerComponent implements OnInit {
   addPassword(): void {
     this.router.navigate(['/createPassword'])
   }
+
+  modifyPassword(id: string): void {
+    this.router.navigate(['/modificarContraseña', id]);
+  }
+
 }

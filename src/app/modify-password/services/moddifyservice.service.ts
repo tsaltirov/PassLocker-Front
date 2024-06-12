@@ -11,15 +11,13 @@ export class ModdifyserviceService {
   constructor(private authService: LoginService) { }
 
 
-  async modifyPassword(userService: string, userName: string, password: string): Promise<void> {
+  async modifyPassword(id: string, userService: string, userName: string, password: string): Promise<void> {
     const token = this.authService.getToken();
     if (!token) {
       throw new Error('No token available');
     }
 
-  
-
-    const url = `${this.apiUrl}/id`; // falta el id de la contraseña que se quiera modificar
+    const url = `${this.apiUrl}/${id}`; // falta el id de la contraseña que se quiera modificar
     const data = {
       userService,
       userName,
