@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { ForgotpasswordService } from '../services/forgot-password.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -12,7 +13,10 @@ export class ForgotpasswordComponent {
 
   email: string = '';
 
-  constructor(private forgotpasswordService: ForgotpasswordService) { }
+  constructor(
+    private forgotpasswordService: ForgotpasswordService,
+    private router: Router
+  ) { }
 
   sendForgotPassword() {
     this.forgotpasswordService.requestPasswordReset(this.email)
@@ -23,7 +27,9 @@ export class ForgotpasswordComponent {
           title: "Correo Enviado con éxito!",
           showConfirmButton: false,
           timer: 2000
-        })
+        }).then(() => {
+          this.router.navigate(['/']); 
+        });
         console.log('Password reset request sent:', response);
       })
       .catch(error => {
