@@ -34,4 +34,9 @@ export class PasswordManagerComponent implements OnInit {
     this.router.navigate(['/modificarContraseña', id]);
   }
 
+  logout(): void {
+    
+    this.router.navigate(['/']);
+  }
+
 }
