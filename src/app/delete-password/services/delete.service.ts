@@ -22,7 +22,7 @@ export class DeleteService {
 
 
     try {
-      await axios.patch(url, { headers: { 'Authorization': `Bearer ${token}` } });
+      await axios.delete(url, { headers: { 'Authorization': `Bearer ${token}` } });
       console.log('se elimino', id);
       
     } catch (error) {
