@@ -19,7 +19,10 @@ import { CreateCodeComponent } from './login/create-code/create-code.component';
 import { PasswordCreatorComponent } from './password-creator/password-creator.component';
 import { PasswordManagerComponent } from './password-manager/password-manager.component';
 import { ModifyPasswordComponent } from './modify-password/modify-password.component';
-import { DeletePasswordComponent } from './delete-password/delete-password.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/delete-confirmation-modal.component';
+
 
 
 
@@ -39,14 +42,17 @@ import { DeletePasswordComponent } from './delete-password/delete-password.compo
     PasswordCreatorComponent,
     PasswordManagerComponent,
     ModifyPasswordComponent,
-    DeletePasswordComponent,
+    DeleteConfirmationModalComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

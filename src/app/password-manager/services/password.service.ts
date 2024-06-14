@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { LoginService } from '../login/services/login.service';
+import { LoginService } from '../../login/services/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,7 @@ import { LoginService } from '../login/services/login.service';
 export class PasswordService {
 
   private apiUrl = 'http://localhost:3000/api/pass-handler/findAll';
+  private apiUrl2 = 'http://localhost:3000/api/pass-handler';
 
   constructor(private authService: LoginService) {}
 
@@ -34,24 +35,24 @@ export class PasswordService {
       throw error;
     }
   }
- /* async deletePassword(id: string): Promise<any> {
+
+  async deletePassword(id: string): Promise<void> {
+    const token = this.authService.getToken();
+    if (!token) {
+      throw new Error('No token available');
+    }
+
+    const url = `${this.apiUrl2}/${id}`
+
+
     try {
-      const token = this.authService.getToken();
-      if (!token) {
-        throw new Error('No token available');
-      }
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      };
-      const response = await axios.delete(`${this.apiUrl}/delete/${id}`, config);
-      return response.data;
+      await axios.delete(url, { headers: { 'Authorization': `Bearer ${token}` } });
+      console.log('se elimino', id);
+      
     } catch (error) {
-      console.error('Error deleting password:', error);
+      console.error('Error al eliminar :', error);
+    
       throw error;
     }
-  }*/
-
-
+  }
 }

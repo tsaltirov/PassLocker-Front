@@ -7,7 +7,7 @@ import axios from 'axios';
 })
 export class DeleteService {
 
-  private apiUrl = 'http://localhost:3000/api/pass-handler';
+  private apiUrl2 = 'http://localhost:3000/api/pass-handler';
 
   constructor(private authService: LoginService) { }
 
@@ -18,7 +18,7 @@ export class DeleteService {
       throw new Error('No token available');
     }
 
-    const url = `${this.apiUrl}/${id}`
+    const url = `${this.apiUrl2}/${id}`
 
 
     try {
