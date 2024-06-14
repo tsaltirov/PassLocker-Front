@@ -19,14 +19,14 @@ export class PasswordService {
         throw new Error('No token available');
       }
 
-      // Configura el encabezado de la solicitud con el token de acceso
+      
       const config = {
         headers: {
           Authorization: `Bearer ${token}`
         }
       };
 
-      // Realiza la solicitud HTTP con el encabezado configurado
+     
       const response = await axios.get(this.apiUrl, config);
       return response.data;
     } catch (error) {
@@ -34,4 +34,24 @@ export class PasswordService {
       throw error;
     }
   }
+ /* async deletePassword(id: string): Promise<any> {
+    try {
+      const token = this.authService.getToken();
+      if (!token) {
+        throw new Error('No token available');
+      }
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      const response = await axios.delete(`${this.apiUrl}/delete/${id}`, config);
+      return response.data;
+    } catch (error) {
+      console.error('Error deleting password:', error);
+      throw error;
+    }
+  }*/
+
+
 }

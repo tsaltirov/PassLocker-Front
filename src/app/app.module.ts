@@ -19,6 +19,7 @@ import { CreateCodeComponent } from './login/create-code/create-code.component';
 import { PasswordCreatorComponent } from './password-creator/password-creator.component';
 import { PasswordManagerComponent } from './password-manager/password-manager.component';
 import { ModifyPasswordComponent } from './modify-password/modify-password.component';
+import { DeletePasswordComponent } from './delete-password/delete-password.component';
 
 
 
@@ -38,6 +39,7 @@ import { ModifyPasswordComponent } from './modify-password/modify-password.compo
     PasswordCreatorComponent,
     PasswordManagerComponent,
     ModifyPasswordComponent,
+    DeletePasswordComponent,
   ],
   imports: [
     BrowserModule,
