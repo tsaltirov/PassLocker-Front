@@ -35,6 +35,10 @@ export class PasswordManagerComponent implements OnInit {
     }
   }
 
+  togglePasswordVisibility(index: number): void {
+    this.passwords[index].isPasswordVisible = !this.passwords[index].isPasswordVisible;
+  }
+
   addPassword(): void {
     this.router.navigate(['/createPassword'])
   }
@@ -73,12 +77,6 @@ export class PasswordManagerComponent implements OnInit {
      
       ;
   }
-
-  togglePasswordVisibility() {
-    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
-  }
-
-
 
   logout(): void {
    
