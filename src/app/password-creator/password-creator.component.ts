@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { PasswordCreateService } from './services/password-create.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-password-creator',
@@ -12,7 +14,7 @@ export class PasswordCreatorComponent {
   password: string = '';
   length: number = 9 ;
 
-  constructor(private passwordService: PasswordCreateService) { 
+  constructor(private passwordService: PasswordCreateService, private router: Router) { 
     this.generatePassword();
   }
 
@@ -30,12 +32,32 @@ export class PasswordCreatorComponent {
 
   savePassword(): void {
     this.passwordService.savePassword(this.userService, this.userName, this.password)
-      .then(() => {
-        alert('Password saved successfully!');
-      })
-      .catch(error => {
-        alert('Error saving password. Please try again.');
-        console.error(error);
+    .then(() => {
+      Swal.fire({
+        title: '¡Contraseña guardada!',
+        text: 'Tu contraseña ha sido guardada exitosamente.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        customClass: {
+          confirmButton: 'btn btn-success',
+        },
+        buttonsStyling: false,
+      }).then(() => {
+        this.router.navigate(['/home']);
       });
+    })
+    .catch(error => {
+      Swal.fire({
+        title: 'Error',
+        text: 'Error al guardar la contraseña. Por favor, inténtalo de nuevo.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+        customClass: {
+          confirmButton: 'btn btn-danger',
+        },
+        buttonsStyling: false,
+      });
+      console.error(error);
+    });
   }
 }
