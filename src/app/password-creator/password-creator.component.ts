@@ -35,11 +35,12 @@ export class PasswordCreatorComponent {
     .then(() => {
       Swal.fire({
         title: '¡Contraseña guardada!',
-        text: 'Tu contraseña ha sido guardada exitosamente.',
+        text: 'Tu contraseña ha sido guardada exitosamente. Redirigiendo...',
         icon: 'success',
-        confirmButtonText: 'Aceptar',
+        showConfirmButton: false,
+        timer: 1500, // Tiempo en milisegundos (2 segundos)
         customClass: {
-          confirmButton: 'btn btn-success',
+          popup: 'swal-popup',
         },
         buttonsStyling: false,
       }).then(() => {
