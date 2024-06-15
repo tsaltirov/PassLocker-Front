@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteService } from './services/delete.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteConfirmationModalComponent } from '../delete-confirmation-modal/delete-confirmation-modal.component';
+import { LoginService } from '../login/services/login.service';
+
 
 @Component({
   selector: 'app-password-manager',
@@ -14,11 +16,15 @@ import { DeleteConfirmationModalComponent } from '../delete-confirmation-modal/d
 export class PasswordManagerComponent implements OnInit {
 
   passwords: any[] = [];
+  passwordFieldType: string = 'password';
+  userFullName: string | null = '';  
 
-  constructor(private passwordService: PasswordService, private router:Router, private route: ActivatedRoute, private deleteService: DeleteService,  private dialog: MatDialog) {}
+  constructor(private passwordService: PasswordService, private router:Router, private loginService: LoginService, private deleteService: DeleteService,  private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadPasswords();
+    this.userFullName = this.loginService.getFullName();
+    console.log('Full Name:', this.userFullName);
   }
 
   async loadPasswords(): Promise<void> {
@@ -67,6 +73,12 @@ export class PasswordManagerComponent implements OnInit {
      
       ;
   }
+
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
+
+
 
   logout(): void {
    

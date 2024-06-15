@@ -15,6 +15,9 @@ export class LoginService {
       const response = await axios.post(`${this.apiUrl}/login`, { email, password });
       const accessToken = response.data.accessToken;
       localStorage.setItem('accessToken', accessToken);
+      const userFullName = response.data.userFullName;
+      localStorage.setItem('userFullName', userFullName);
+
       return response.data;
     } catch (error) {
       throw error;
@@ -23,5 +26,9 @@ export class LoginService {
 
   getToken(): string | null {
     return localStorage.getItem('accessToken');
+  }
+
+  getFullName(): string |  null {
+    return localStorage.getItem('userFullName')
   }
 }
