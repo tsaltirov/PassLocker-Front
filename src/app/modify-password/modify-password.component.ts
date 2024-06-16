@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModdifyserviceService } from './services/moddifyservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modify-password',
@@ -22,13 +23,34 @@ export class ModifyPasswordComponent implements OnInit {
   }
 
   async modifyPassword() { 
-    try {
-      await this.modifyService.modifyPassword(this.id, this.nombreDelServicio, this.nombreDelUsuario, this.nueva);
-      console.log('Password updated successfully');
-      this.router.navigate(['/home'])
+    const result = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¿Deseas modificar la contraseña?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, modificarla',
+      cancelButtonText: 'Cancelar'
+    });
 
-    } catch (error) {
-      console.error('Error updating password:', error);
+    if (result.isConfirmed) {
+      try {
+        await this.modifyService.modifyPassword(this.id, this.nombreDelServicio, this.nombreDelUsuario, this.nueva);
+        Swal.fire(
+          'Modificada',
+          'La contraseña ha sido modificada.',
+          'success'
+        );
+        this.router.navigate(['/home']);
+      } catch (error) {
+        console.error('Error updating password:', error);
+        Swal.fire(
+          'Error',
+          'Hubo un problema al modificar la contraseña.',
+          'error'
+        );
+      }
     }
   }
 }

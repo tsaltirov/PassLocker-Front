@@ -26,7 +26,6 @@ export class ModdifyserviceService {
 
     try {
       await axios.patch(url, data, { headers: { 'Authorization': `Bearer ${token}` } });
-      console.log('Password updated successfully');
     } catch (error) {
       console.error('Error updating password:', error);
       throw error;

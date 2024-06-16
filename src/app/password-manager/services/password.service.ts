@@ -20,7 +20,6 @@ export class PasswordService {
         throw new Error('No token available');
       }
 
-      
       const config = {
         headers: {
           Authorization: `Bearer ${token}`

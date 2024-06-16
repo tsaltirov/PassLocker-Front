@@ -21,10 +21,6 @@ import { PasswordManagerComponent } from './password-manager/password-manager.co
 import { ModifyPasswordComponent } from './modify-password/modify-password.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/delete-confirmation-modal.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -42,7 +38,6 @@ import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/de
     PasswordCreatorComponent,
     PasswordManagerComponent,
     ModifyPasswordComponent,
-    DeleteConfirmationModalComponent,
     
   ],
   imports: [

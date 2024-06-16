@@ -27,7 +27,7 @@ export class CreateCodeComponent {
           const response = this.sendCode.sendLoginRequest(email,this.generated)
         }
       }catch(error){
-        console.error('error aql enviar la solicitud de login', error)
+        console.error('error al enviar la solicitud de login', error)
       }
     } 
 
@@ -35,7 +35,7 @@ export class CreateCodeComponent {
     const storedCode = localStorage.getItem('generatedCode'); // Obtener el código almacenado en localStorage
     if (this.generated === this.code) { // Comparar el código ingresado con el código almacenado
       Swal.fire({
-        title: "Los códigos coinciden",
+        title: "Autentificacion realizada exitosamente",
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,

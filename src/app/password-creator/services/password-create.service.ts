@@ -22,7 +22,6 @@ export class PasswordCreateService {
       { headers: { 'Authorization': `Bearer ${token}` } }
     )
     .then(response => {
-      console.log('Password saved successfully', response.data);
     })
     .catch(error => {
       console.error('Error saving password', error);

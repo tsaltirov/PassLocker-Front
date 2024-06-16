@@ -23,11 +23,9 @@ export class DeleteService {
 
     try {
       await axios.delete(url, { headers: { 'Authorization': `Bearer ${token}` } });
-      console.log('se elimino', id);
       
     } catch (error) {
       console.error('Error al eliminar :', error);
-    
       throw error;
     }
   }

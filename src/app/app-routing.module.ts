@@ -9,6 +9,7 @@ import { CreateCodeComponent } from './login/create-code/create-code.component';
 import { PasswordCreatorComponent } from './password-creator/password-creator.component';
 import { PasswordManagerComponent } from './password-manager/password-manager.component';
 import { ModifyPasswordComponent } from './modify-password/modify-password.component';
+import { AuthGuard } from './guard/auth/auth.guard';
 
 
 const routes: Routes = [
@@ -34,20 +35,21 @@ const routes: Routes = [
   },
   {
     path: 'verifyCode',
-    component: CreateCodeComponent
+    component: CreateCodeComponent, canActivate: [AuthGuard]
   },
   {
     path: 'createPassword',
-    component: PasswordCreatorComponent
+    component: PasswordCreatorComponent, canActivate: [AuthGuard]
   },
   {
     path: 'home',
-    component: PasswordManagerComponent
+    component: PasswordManagerComponent, canActivate: [AuthGuard]
   },
   {
     path: 'modificarContraseña/:id',
-    component: ModifyPasswordComponent
+    component: ModifyPasswordComponent, canActivate: [AuthGuard]
   },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

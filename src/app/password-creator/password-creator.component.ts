@@ -26,7 +26,13 @@ export class PasswordCreatorComponent {
 
   copyPassword(): void {
     navigator.clipboard.writeText(this.password).then(() => {
-      alert('Contraseña copiada!');
+      Swal.fire({
+        title: '¡Contraseña copiada!',
+        text: 'La contraseña se ha copiado al portapapeles.',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1000
+      });
     });
   }
 

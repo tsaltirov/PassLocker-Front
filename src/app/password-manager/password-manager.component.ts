@@ -4,8 +4,8 @@ import { PasswordService } from './services/password.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteService } from './services/delete.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteConfirmationModalComponent } from '../delete-confirmation-modal/delete-confirmation-modal.component';
 import { LoginService } from '../login/services/login.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -24,7 +24,6 @@ export class PasswordManagerComponent implements OnInit {
   ngOnInit(): void {
     this.loadPasswords();
     this.userFullName = this.loginService.getFullName();
-    console.log('Full Name:', this.userFullName);
   }
 
   async loadPasswords(): Promise<void> {
@@ -48,39 +47,42 @@ export class PasswordManagerComponent implements OnInit {
   }
 
 
-  openDeleteConfirmationModal(id:string): void {
-    const dialogRef = this.dialog.open(DeleteConfirmationModalComponent, {
-      width: '400px',
-      data: { id }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+  openDeleteConfirmationModal(id: string): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminarlo',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.deletePassword(id);
       }
     });
   }
 
-
-    async deletePassword(id:string): Promise<void> {
-   
-      try{
-        await this.deleteService.deletePassword(id)
-      
-        console.log(`Contraseña con id ${id} eliminada correctamente.`);
-        // this.router.navigate(['/home'])
-        await this.loadPasswords();
-      }
-      catch(error){
-        console.error('Error al eliminar la contraseña:', error);}
-        
-     
-      ;
+  async deletePassword(id: string): Promise<void> {
+    try {
+      await this.deleteService.deletePassword(id);
+      await this.loadPasswords();
+      Swal.fire(
+        'Eliminado!',
+        'La contraseña ha sido eliminada.',
+        'success'
+      );
+    } catch (error) {
+      console.error('Error al eliminar la contraseña:', error);
+    }
   }
 
   logout(): void {
-   
-    this.router.navigate(['/']);
+    localStorage.clear();
+    this.router.navigate(['/']).then(() => {
+    window.location.reload(); // Fuerza la recarga de la página
+  });
   }
 
 }
