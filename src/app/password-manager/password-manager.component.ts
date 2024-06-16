@@ -1,12 +1,10 @@
-
 import { Component, OnInit } from '@angular/core';
 import { PasswordService } from './services/password.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DeleteService } from './services/delete.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from '../login/services/login.service';
 import Swal from 'sweetalert2';
-
 
 @Component({
   selector: 'app-password-manager',
@@ -19,7 +17,12 @@ export class PasswordManagerComponent implements OnInit {
   passwordFieldType: string = 'password';
   userFullName: string | null = '';  
 
-  constructor(private passwordService: PasswordService, private router:Router, private loginService: LoginService, private deleteService: DeleteService,  private dialog: MatDialog) {}
+  constructor(
+    private passwordService: PasswordService,
+    private router: Router,
+    private loginService: LoginService,
+    private deleteService: DeleteService,
+  ) {}
 
   ngOnInit(): void {
     this.loadPasswords();
@@ -39,13 +42,12 @@ export class PasswordManagerComponent implements OnInit {
   }
 
   addPassword(): void {
-    this.router.navigate(['/createPassword'])
+    this.router.navigate(['/createPassword']);
   }
 
   modifyPassword(id: string): void {
     this.router.navigate(['/modificarContraseña', id]);
   }
-
 
   openDeleteConfirmationModal(id: string): void {
     Swal.fire({
@@ -81,8 +83,7 @@ export class PasswordManagerComponent implements OnInit {
   logout(): void {
     localStorage.clear();
     this.router.navigate(['/']).then(() => {
-    window.location.reload(); // Fuerza la recarga de la página
-  });
+      window.location.reload(); // Fuerza la recarga de la página
+    });
   }
-
 }

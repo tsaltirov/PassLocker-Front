@@ -11,7 +11,6 @@
   justify-content: center;
   width: 500px;
   height: 550px;
-
   margin: auto;
   padding: 20px 15px;
 }
@@ -30,7 +29,7 @@ h2 {
   font-size: 30px;
 }
 p {
-    color: #084e84;
+  color: #084e84;
   font-size: 18px;
 }
 
@@ -91,7 +90,6 @@ form label {
 form input {
   width: 100%;
   border: 1px solid rgba(34, 14, 134, 0.3);
-
   background:#c2ebf5;
   padding: 1.6rem;
   border-radius: 0.4rem;
@@ -99,7 +97,6 @@ form input {
 
 form input:focus {
   outline: 1px solid #3e169d;
-  
 }
 
 form input::placeholder {
@@ -119,11 +116,8 @@ form button {
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-
   font-weight: bold;
-
   cursor: pointer;
-
   transition: background 0.3s;
 }
 

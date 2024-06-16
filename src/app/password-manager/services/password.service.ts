@@ -13,7 +13,6 @@ export class PasswordService {
   constructor(private authService: LoginService) {}
 
   async getPasswords(): Promise<any[]> {
-
     try {
       const token = this.authService.getToken();
       if (!token) {
@@ -26,7 +25,6 @@ export class PasswordService {
         }
       };
 
-     
       const response = await axios.get(this.apiUrl, config);
       return response.data;
     } catch (error) {
@@ -41,16 +39,13 @@ export class PasswordService {
       throw new Error('No token available');
     }
 
-    const url = `${this.apiUrl2}/${id}`
-
+    const url = `${this.apiUrl2}/${id}`;
 
     try {
       await axios.delete(url, { headers: { 'Authorization': `Bearer ${token}` } });
       console.log('se elimino', id);
-      
     } catch (error) {
       console.error('Error al eliminar :', error);
-    
       throw error;
     }
   }

@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { RegisterService } from '../register/form-register/services/register.service';
-import { FormRegisterComponent } from '../register/form-register/form-register.component';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -11,7 +9,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register-verify',
   templateUrl: './register-verify.component.html',
-  styleUrl: './register-verify.component.css',
+  styleUrls: ['./register-verify.component.css'],
   providers: [RegisterService]
 })
 export class RegisterVerifyComponent implements OnInit {
@@ -19,6 +17,7 @@ export class RegisterVerifyComponent implements OnInit {
   public password: string;
   public fullName: string;
   public userType: string;
+  
   constructor(private _route: ActivatedRoute, private router: Router) {
     this.email = '';
     this.password = '';
@@ -37,12 +36,10 @@ export class RegisterVerifyComponent implements OnInit {
       fullName: this.fullName,
       password: this.password,
       userType: this.userType
-    }
-
+    };
 
     axios.post('http://localhost:3000/api/auth/register-account', user)
-
-      .then(response=> {
+      .then(response => {
         this.router.navigate(['/login']);
         Swal.fire({
           title: "Usuario registrado con éxito!",
@@ -53,10 +50,8 @@ export class RegisterVerifyComponent implements OnInit {
           imageAlt: "Custom image",
           showDenyButton: false,
           showCancelButton: false,
-          confirmButtonText: "OK",
-
-        })
-
+          confirmButtonText: "OK"
+        });
       })
       .catch(error => {
         console.error('Error al registrar el usuario', error);

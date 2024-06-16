@@ -8,20 +8,21 @@ import { LoginService } from '../../login/services/login.service';
 export class PasswordCreateService {
   private apiUrl = 'http://localhost:3000/api/pass-handler/create';
 
-  constructor(private authService: LoginService) { }
+  constructor(private authService: LoginService) {}
 
-  savePassword( userService: string, userName: string, password: string): Promise<void> {
-
+  savePassword(userService: string, userName: string, password: string): Promise<void> {
     const token = this.authService.getToken();
     if (!token) {
       return Promise.reject('No token available');
     }
 
-    return axios.post(this.apiUrl, 
+    return axios.post(
+      this.apiUrl,
       { userService, userName, password },
       { headers: { 'Authorization': `Bearer ${token}` } }
     )
     .then(response => {
+      // Handle successful response if needed
     })
     .catch(error => {
       console.error('Error saving password', error);

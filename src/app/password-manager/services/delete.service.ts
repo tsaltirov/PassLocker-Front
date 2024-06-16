@@ -11,21 +11,18 @@ export class DeleteService {
 
   constructor(private authService: LoginService) { }
 
-
   async deletePassword(id: string): Promise<void> {
     const token = this.authService.getToken();
     if (!token) {
       throw new Error('No token available');
     }
 
-    const url = `${this.apiUrl2}/${id}`
-
+    const url = `${this.apiUrl2}/${id}`;
 
     try {
       await axios.delete(url, { headers: { 'Authorization': `Bearer ${token}` } });
-      
     } catch (error) {
-      console.error('Error al eliminar :', error);
+      console.error('Error al eliminar contraseña:', error); // Añadido un mensaje más descriptivo
       throw error;
     }
   }

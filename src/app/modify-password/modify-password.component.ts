@@ -5,8 +5,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modify-password',
-  templateUrl: './modify-password.component.html',
-  styleUrl: './modify-password.component.css'
+  templateUrl: './modify-password.component.html'
 })
 export class ModifyPasswordComponent implements OnInit {
   id: string = '';
