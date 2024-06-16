@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PasswordCreateService } from './services/password-create.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-password-creator',
@@ -20,8 +21,12 @@ export class PasswordCreatorComponent {
 
   generatePassword(): void {
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
-    this.password = Array(this.length || 9).fill(chars).map(x => x[Math.floor(Math.random() * x.length)]).join('');
-    this.length = this.password.length;
+    let newPassword = '';
+    for (let i = 0; i < this.length; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      newPassword += chars[randomIndex];
+    }
+    this.password = newPassword;
   }
 
   copyPassword(): void {
@@ -67,4 +72,10 @@ export class PasswordCreatorComponent {
       console.error(error);
     });
   }
+
+  onLengthChange(event: any): void {
+    this.length = parseInt(event, 10);
+    this.generatePassword();
+  }  
+
 }
