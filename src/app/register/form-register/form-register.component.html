@@ -5,7 +5,7 @@
     </div>
     <form class="form" (ngSubmit)="sendValues()">
         <label for="email">Correo Electrónico</label><br>
-        <input class="controls" type="email" [(ngModel)]="email" name="resgiteremail" required email><br>
+        <input class="controls" type="email" [(ngModel)]="email" name="email" required email><br>
         <div *ngIf="emailTouched && !emailValid">
             <div *ngIf="!emailRequired">El campo es obligatorio.</div>
             <div *ngIf="!emailFormatValid">Email no válido.</div>
