@@ -9,8 +9,7 @@ import { FormularioLoginComponent } from './login/formulario-login/formulario-lo
 import { FondoComponent } from './login/fondo/fondo.component';
 import { RegisterComponent } from './register/register.component';
 import { FormRegisterComponent } from './register/form-register/form-register.component';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterVerifyComponent } from './register-verify/register-verify.component';
 import { ForgotpasswordComponent } from './reset-password/forgotpassword/forgotpassword.component';
@@ -21,6 +20,9 @@ import { PasswordManagerComponent } from './password-manager/password-manager.co
 import { ModifyPasswordComponent } from './modify-password/modify-password.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -38,18 +40,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PasswordCreatorComponent,
     PasswordManagerComponent,
     ModifyPasswordComponent,
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

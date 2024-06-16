@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { PasswordCreateService } from './services/password-create.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-password-creator',
@@ -77,5 +76,4 @@ export class PasswordCreatorComponent {
     this.length = parseInt(event, 10);
     this.generatePassword();
   }  
-
 }
