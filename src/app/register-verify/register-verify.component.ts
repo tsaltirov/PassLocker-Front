@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { RegisterService } from '../register/form-register/services/register.service';
+import { environment } from '../environments/environment/environment';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -38,7 +39,7 @@ export class RegisterVerifyComponent implements OnInit {
       userType: this.userType
     };
 
-    axios.post('http://localhost:3000/api/auth/register-account', user)
+    axios.post(`${environment.apiUrl}/auth/register-account`, user)
       .then(response => {
         this.router.navigate(['/login']);
         Swal.fire({

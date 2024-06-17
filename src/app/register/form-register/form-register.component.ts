@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { environment } from '../../environments/environment/environment';
 
 @Component({
   selector: 'app-form-register',
@@ -107,7 +108,7 @@ export class FormRegisterComponent {
     };
 
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/request-register-account', user);
+      const response = await axios.post(`${environment.apiUrl}/auth/request-register-account`, user);
 
       if (response.data.message === 'Usuario ya registrado.') {
         Swal.fire({

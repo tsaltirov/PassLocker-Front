@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { LoginService } from '../../login/services/login.service';
 import axios from 'axios';
+import { environment } from '../../environments/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeleteService {
 
-  private apiUrl2 = 'http://localhost:3000/api/pass-handler';
+  private apiUrl2 = `${environment.apiUrl}/pass-handler`;
 
   constructor(private authService: LoginService) { }
 

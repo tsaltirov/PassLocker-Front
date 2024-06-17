@@ -96,9 +96,6 @@ export class PasswordManagerComponent implements OnInit {
       );
     });
   }
-  
-
-
 
   logout(): void {
     localStorage.clear();

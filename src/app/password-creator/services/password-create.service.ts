@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { LoginService } from '../../login/services/login.service';
+import { environment } from '../../environments/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PasswordCreateService {
-  private apiUrl = 'http://localhost:3000/api/pass-handler/create';
+
+  private apiUrl = `${environment.apiUrl}/pass-handler/create`;
 
   constructor(private authService: LoginService) {}
 
