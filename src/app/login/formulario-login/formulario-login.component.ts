@@ -61,9 +61,6 @@ export class FormularioLoginComponent {
       showDenyButton: false,
       showCancelButton: false,
       confirmButtonText: "Continuar",
-      customClass: {
-        container: 'swal2-container'
-      }
     });
   }
 
@@ -75,9 +72,6 @@ export class FormularioLoginComponent {
       showCancelButton: true,
       confirmButtonText: "Intentar de nuevo",
       cancelButtonText: "Registrarse",
-      customClass: {
-        container: 'swal2-container'
-      }
     }).then((res) => {
       if(res.isDismissed){
         this.router.navigate(['/singup'])
