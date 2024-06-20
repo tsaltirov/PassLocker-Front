@@ -1,53 +1,44 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 17px;
-}
-
-.form-login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 400px;
-    height: 500px;
-    color: white;
-    margin: auto;
-    padding: 20px 15px;
-}
-
-.login-welcome {
-    justify-content: center;
-    padding-bottom: 70px;
+ /* Estilos del formulario */
+  .form-login {
     text-align: center;
-}
-
-form {
-    text-align: center;
-}
-
-.controls {
-    text-align: center;
+    color: black;
+  }
+  
+  .titulo {
+    color: #0097B9;
+    font-size: 28px;
+  }
+  
+  .controls {
     width: 100%;
-    margin-bottom: 15px;
-    padding: 11px 10px;
-    margin-top: 0.4em;
-} 
-
-.buttons {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+  }
+  
+  .buttons {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
     color: white;
-    background-color: #0367a6;
-    width: 60%;
-    height: 40px;
-    border: 1px solid #0367a6;
-    margin-top: 38px;
-    margin-bottom: 15px;
-}
-
-a.vinculo-login {
-    color: white;
-}
-
-
-
-
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .buttons:hover {
+    background-color: #0056b3;
+  }
+  
+  .vinculo-login {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .vinculo-login:hover {
+    text-decoration: underline;
+  }

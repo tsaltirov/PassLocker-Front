@@ -60,7 +60,10 @@ export class FormularioLoginComponent {
       icon: 'success',
       showDenyButton: false,
       showCancelButton: false,
-      confirmButtonText: "Continuar"
+      confirmButtonText: "Continuar",
+      customClass: {
+        container: 'swal2-container'
+      }
     });
   }
 
@@ -71,7 +74,10 @@ export class FormularioLoginComponent {
       text: "Por favor, verifica tus datos de acceso. Si no tienes una cuenta, puedes registrarte ahora.",
       showCancelButton: true,
       confirmButtonText: "Intentar de nuevo",
-      cancelButtonText: "Registrarse"
+      cancelButtonText: "Registrarse",
+      customClass: {
+        container: 'swal2-container'
+      }
     }).then((res) => {
       if(res.isDismissed){
         this.router.navigate(['/singup'])

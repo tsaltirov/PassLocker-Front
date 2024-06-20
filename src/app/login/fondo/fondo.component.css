@@ -1,21 +1,19 @@
-.fondo-logo{
-    width: 50vw;
-    flex-basis: 50vw;
-    height: 100vh;
-    align-content: center;
-}
-
-img.img-logo {
-    width: 400px;
+/* .fondo-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75em;
+    height: 56em;
+    z-index: 1;
     display: flex;
-    margin: 0 auto;
-}
-
-.logo-h2{
-    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    font-size: 40px;
-    color: #084e84
 }
 
-
+.img-logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+} */

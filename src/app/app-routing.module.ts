@@ -10,6 +10,7 @@ import { PasswordCreatorComponent } from './password-creator/password-creator.co
 import { PasswordManagerComponent } from './password-manager/password-manager.component';
 import { ModifyPasswordComponent } from './modify-password/modify-password.component';
 import { AuthGuard } from './guard/auth/auth.guard';
+import { FormularioLoginComponent } from './login/formulario-login/formulario-login.component';
 
 
 const routes: Routes = [
