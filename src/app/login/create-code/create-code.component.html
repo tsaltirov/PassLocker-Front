@@ -1,10 +1,17 @@
 <div class="container">
-    <div class="card">
-      <form (ngSubmit)="verifyCode()">
-        <label for="code">Código:</label>
-        <input type="text" name="code" [(ngModel)]="code" />
-        <button type="submit">Confirmar</button>
-      </form>
-    </div>
+  <div class="card">
+    <form [formGroup]="codeForm" (ngSubmit)="verifyCode()">
+      <div class="form-group">
+        <label for="code">Codigo:</label>
+        <input type="text" id="code" formControlName="code">
+        <div class="error">
+          <div *ngIf="code.invalid && (code.dirty || code.touched)">
+            <small *ngIf="code.errors?.required">El código es obligatorio.</small>
+            <small *ngIf="code.errors?.pattern">El código debe contener exactamente 6 números.</small>
+          </div>
+        </div>  
+      </div>
+      <button type="submit" [disabled]="code.invalid">Confirmar</button>
+    </form>
   </div>
-  
+</div>

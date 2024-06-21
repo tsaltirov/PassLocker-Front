@@ -1,56 +1,70 @@
 <section class="form-register">
     <div class="register-welcome">
-        <h2>¡Bienvenido!</h2>
-        <p>¿Ya tienes una cuenta? <a class="vinculo-register" routerLink="/"> Inicia sesión</a></p>
+      <h2 class="titulo">¡Te damos la bienvenida a <span class="part1">Pass</span><span class="part2">Locker!</span></h2>
     </div>
-    <form class="form" (ngSubmit)="sendValues()">
-        <label for="email">Correo Electrónico</label><br>
-        <input class="controls" type="email" [(ngModel)]="email" name="email" required email><br>
-        <div *ngIf="emailTouched && !emailValid">
-            <div *ngIf="!emailRequired">El campo es obligatorio.</div>
-            <div *ngIf="!emailFormatValid">Email no válido.</div>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="sendValues()">
+      <div class="form-group">
+        <label for="fullName">Nombre:</label><br>
+        <input class="controls" id="fullName" type="text" formControlName="fullName">
+        <div class="error">
+          <div *ngIf="fullName?.invalid && fullName?.touched">
+            <small *ngIf="fullName?.errors?.required">El nombre completo es obligatorio.</small>
+          </div>
         </div>
-        <label for="fullname">Nombre de usuario</label><br>
-        <input class="controls" type="text" [(ngModel)]="fullName" name="fullname" required><br>
-        <div *ngIf="fullNameTouched && !fullNameValid">
-            <div *ngIf="!fullNameRequired">El campo es obligatorio.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label><br>
+        <input class="controls" id="email" type="email" formControlName="email">
+        <div class="error">
+          <div *ngIf="email?.invalid && email?.touched">
+            <small *ngIf="email?.errors?.required">El correo electrónico es obligatorio.</small>
+            <small *ngIf="email?.errors?.email">El correo electrónico no es válido.</small>
+          </div>
         </div>
+      </div>
+  
+      <div class="form-group">
         <label for="password">Contraseña</label><br>
-        <input class="controls" type="password" [(ngModel)]="password" name="password" required><br>
-        <div *ngIf="passwordTouched && !passwordValid">
-            <div *ngIf="!passwordRequired">El campo es obligatorio.</div>
-            <div *ngIf="!passwordMinLength">La contraseña debe tener al menos 6 caracteres.</div>
-            <div *ngIf="!passwordPattern">La contraseña debe contener números, letras minúsculas y mayúsculas.</div>
+        <div class="password-container">
+          <input class="controls" id="password" [type]="passwordFieldType" formControlName="password">
+          <i class="fa" [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePasswordVisibility()"></i>
         </div>
-        <label for="password">Confirmar contraseña</label><br>
-        <input class="controls" type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required><br>
-        <div *ngIf="confirmPasswordTouched && !confirmPasswordValid">
-            <div *ngIf="!confirmPasswordRequired">El campo es obligatorio.</div>
-            <div *ngIf="!passwordsMatch">Las contraseñas no coinciden.</div>
+        <div class="error2">
+            <small *ngIf="password?.errors?.required && password?.touched">Debe ingresar una contraseña.</small>
+            <small *ngIf="password?.errors?.minlength && password?.touched">La contraseña debe tener al menos 6 caracteres.</small>
+            <small *ngIf="password?.errors?.pattern && password?.touched">Debe incluir al menos una mayúscula, una minúscula y un número.</small>
+          </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar contraseña</label><br>
+        <input class="controls" id="confirmPassword" type="password" formControlName="confirmPassword">
+        <div class="error">
+          <div *ngIf="confirmPassword?.invalid && confirmPassword?.touched">
+            <small *ngIf="confirmPassword?.errors?.required">Confirmar contraseña es obligatorio.</small>
+            <small *ngIf="confirmPassword?.errors?.passwordMismatch">Las contraseñas no coinciden.</small>
+          </div>
         </div>
-      
-        <div class="checkbox">
-            <p class="usertype">Tipo de usuario</p>
-            <ul>
-                <li>
-                    <label><input type="radio" name="usertype" id="checkbox1" value="individual" [(ngModel)]="userType">Individual</label>
-                </li>
-                <li>
-                    <label><input type="radio" name="usertype" id="checkbox2" value="professional" [(ngModel)]="userType">Profesional</label>
-                </li>
-                <li>
-                    <label><input type="radio" name="usertype" id="checkbox3" value="pyme" [(ngModel)]="userType">Pyme</label>
-                </li>
-                <li>
-                    <label><input type="radio" name="usertype" id="checkbox4" value="organization" [(ngModel)]="userType">Organización</label>
-                </li>
-            </ul>
-            <div *ngIf="userTypeTouched && !userTypeValid">
-                <div *ngIf="!userTypeRequired">El campo es obligatorio.</div>
-            </div>
+      </div>
+  
+      <div class="checkbox">
+        <p class="usertype">Tipo de usuario</p>
+        <ul>
+          <li><label><input type="radio" formControlName="userType" value="individual"> Individual</label></li>
+          <li><label><input type="radio" formControlName="userType" value="professional"> Profesional</label></li>
+          <li><label><input type="radio" formControlName="userType" value="pyme"> Pyme</label></li>
+          <li><label><input type="radio" formControlName="userType" value="organization"> Organización</label></li>
+        </ul>
+        <div class="error">
+          <div *ngIf="userType?.invalid && userType?.touched">
+            <small>Debe seleccionar un tipo de usuario.</small>
+          </div>
         </div>
-
-        <button class="buttons" type="button" (click)="sendValues()">Enviar</button>
-
-    </form>  
+      </div>
+  
+      <button class="buttons" type="submit">Registrarse</button>
+      <p>¿Ya tienes una cuenta? <a class="vinculo-register" routerLink="/">Inicia sesión</a></p>
+    </form>
 </section>

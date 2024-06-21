@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { SendCodeService } from '../services/send-code.service';
 import { CodeServiceService } from '../services/code-service.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-code',
@@ -10,35 +11,49 @@ import { CodeServiceService } from '../services/code-service.service';
   styleUrl: './create-code.component.css'
 })
 export class CreateCodeComponent {
-  code: string = ''; // Código ingresado por el usuario
-  generated: string = '';
+  codeForm:any = FormGroup;
+  generated:string = '';
 
   constructor(
     private router: Router,
+    private fb: FormBuilder,
     private sendCode: SendCodeService,
     private codeService: CodeServiceService
   ) {
     this.generated = this.codeService.getGeneratedCode();
+    this.codeForm = this.fb.group({
+      code: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]]
+    });
   }
 
   ngOnInit(): void {
     try {
       const email = this.codeService.getEmail();
-      if (this.generated == '') {
-        console.log('vacio');
+      if (this.generated === '') {
+        console.log('Código generado está vacío');
       } else {
-        const response = this.sendCode.sendLoginRequest(email, this.generated);
+        this.sendCode.sendLoginRequest(email, this.generated).then( response => {
+            console.log('Solicitud de inicio de sesión enviada:', response);
+          }, error => {
+            console.error('Error en la solicitud de inicio de sesión:', error);
+          });
       }
     } catch (error) {
-      console.error('error al enviar la solicitud de login', error);
+      console.error('Error al obtener el código generado', error);
     }
+  }
+
+  // Getter para acceder al control 'code' de manera más fácil en la plantilla
+  get code() {
+    return this.codeForm.get('code');
   }
 
   verifyCode() {
     const storedCode = localStorage.getItem('generatedCode'); // Obtener el código almacenado en localStorage
-    if (this.generated === this.code) { // Comparar el código ingresado con el código almacenado
+
+    if (this.generated === this.code.value) { // Comparar el código ingresado con el código almacenado
       Swal.fire({
-        title: "Autentificación realizada exitosamente",
+        title: "Autenticación realizada exitosamente",
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,

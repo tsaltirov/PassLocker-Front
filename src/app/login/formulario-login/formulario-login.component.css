@@ -1,74 +1,74 @@
  /* Estilos del formulario */
-  .form-login {
-    text-align: center;
-    color: black;
-  }
-  
-  .titulo {
-    color: #0097B9;
-    font-size: 28px;
-  }
-
-  .part1 {
-    color:#0097B9; ;
-  }
-
-  .part2 {
-    color: black;
-  }
-
-  .password-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .password-container input {
-    flex: 1;
-  }
-  
-  .password-container i {
-    position: absolute;
-    right: 15px;
-    cursor: pointer;
-  }
-
-  .error {
-    color: red;
-    height: 1.4em; /* Altura para reservar espacio */
+ .form-login {
+  color: black;
+  text-align: center;
 }
-  
-  .controls {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 40px;
-  }
-  
-  .buttons {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .buttons:hover {
-    background-color: #0056b3;
-  }
-  
-  .vinculo-login {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .vinculo-login:hover {
-    text-decoration: underline;
-  }
 
+.titulo {
+  color: #0097B9;
+  font-size: 28px;
+}
+
+.part1 {
+  color:#0097B9; ;
+}
+
+.part2 {
+  color: black;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+}
+
+.password-container i {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  height: 1.4em; /* Altura para reservar espacio */
+}
+
+.controls {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buttons:hover {
+  background-color: #0056b3;
+}
+
+.vinculo-login {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.vinculo-login:hover {
+  text-decoration: underline;
+}

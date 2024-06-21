@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { environment } from '../../environments/environment/environment';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-register',
@@ -10,117 +11,71 @@ import { environment } from '../../environments/environment/environment';
 })
 
 export class FormRegisterComponent {
-  
-  email: string;
-  fullName: string;
-  password: string;
-  confirmPassword:string;
-  userType:string;
+  registerForm:any = FormGroup;
+  passwordFieldType: string = 'password';
 
-  emailTouched: boolean = false;
-  fullNameTouched: boolean = false;
-  passwordTouched: boolean = false;
-  confirmPasswordTouched: boolean = false;
-  userTypeTouched: boolean = false;
-  
-  constructor(){
-    this.email = ''
-    this.fullName = ''
-    this.password = ''
-    this.confirmPassword = ''
-    this.userType = ''
+  constructor(private fb: FormBuilder) {
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]], // Validators.required y Validators.email
+      fullName: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/)]],
+      userType: ['', Validators.required]
+    }, {
+      confirmPassword: [''],
+      validators: this.passwordMatchValidator // Validador personalizado para confirmar contraseña
+    });
   }
 
-  
-  get emailValid() {
-    return this.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+  // Getter para acceder a los controles del formulario
+  get email() {
+    return this.registerForm.get('email');
   }
 
-  get emailRequired() {
-    return this.email !== '';
+  get fullName() {
+    return this.registerForm.get('fullName');
   }
 
-  get emailFormatValid() {
-    return this.emailValid !== null;
+  get password() {
+    return this.registerForm.get('password');
   }
 
-  get fullNameValid() {
-    return this.fullName !== '';
+  get confirmPassword() {
+    return this.registerForm.get('confirmPassword');
   }
 
-  get fullNameRequired() {
-    return this.fullName !== '';
+  get userType() {
+    return this.registerForm.get('userType');
   }
 
-  get passwordValid() {
-    return this.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/);
+  // Método para alternar visibilidad de contraseña
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 
-  get passwordRequired() {
-    return this.password !== '';
-  }
-
-  get passwordMinLength() {
-    return this.password.length >= 6;
-  }
-
-  get passwordPattern() {
-    return this.passwordValid !== null;
-  }
-
-  get confirmPasswordValid() {
-    return this.password === this.confirmPassword;
-  }
-
-  get confirmPasswordRequired() {
-    return this.confirmPassword !== '';
-  }
-
-  get passwordsMatch() {
-    return this.password === this.confirmPassword;
-  }
-
-  get userTypeValid() {
-    return this.userType !== '';
-  }
-
-  get userTypeRequired() {
-    return this.userType !== '';
-  }
-
-
+  // Método para enviar valores del formulario
   async sendValues() {
-    this.emailTouched = true;
-    this.fullNameTouched = true;
-    this.passwordTouched = true;
-    this.confirmPasswordTouched = true;
-    this.userTypeTouched = true;
+    this.registerForm.markAllAsTouched();
 
-    if (!this.emailValid || !this.fullNameValid || !this.passwordValid || !this.confirmPasswordValid || !this.userTypeValid) {
+    if (this.registerForm.invalid) {
       return;
     }
 
-    const user = {
-      email: this.email,
-      fullName: this.fullName,
-      password: this.password,
-      userType: this.userType
-    };
+    const user = this.registerForm.value;
 
     try {
       const response = await axios.post(`${environment.apiUrl}/auth/request-register-account`, user);
 
       if (response.data.message === 'Usuario ya registrado.') {
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "El usuario ya existe..."
+          icon: 'error',
+          title: 'Oops...',
+          text: 'El usuario ya existe...'
         });
       } else {
         Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Correo Enviado con éxito!",
+          position: 'center',
+          icon: 'success',
+          title: 'Correo Enviado con éxito!',
           showConfirmButton: false,
           timer: 2000
         });
@@ -128,6 +83,23 @@ export class FormRegisterComponent {
       console.log(response.data);
     } catch (error) {
       console.error('Error al registrar el usuario', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Hubo un problema al registrar el usuario. Por favor, inténtalo de nuevo más tarde.'
+      });
+    }
+  }
+
+  // Validador personalizado para confirmar contraseña
+  passwordMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+
+    if (password !== confirmPassword) {
+      formGroup.get('confirmPassword')?.setErrors({ passwordMismatch: true });
+    } else {
+      formGroup.get('confirmPassword')?.setErrors(null);
     }
   }
 }
