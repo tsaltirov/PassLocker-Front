@@ -8,6 +8,35 @@
     color: #0097B9;
     font-size: 28px;
   }
+
+  .part1 {
+    color:#0097B9; ;
+  }
+
+  .part2 {
+    color: black;
+  }
+
+  .password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-container input {
+    flex: 1;
+  }
+  
+  .password-container i {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+  }
+
+  .error {
+    color: red;
+    height: 1.4em; /* Altura para reservar espacio */
+}
   
   .controls {
     width: 100%;

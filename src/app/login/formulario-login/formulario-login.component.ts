@@ -1,40 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { SendCodeService } from '../services/send-code.service';
 import { CodeServiceService } from '../services/code-service.service';
 import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-login',
   templateUrl: './formulario-login.component.html',
   styleUrl: './formulario-login.component.css'
 })
-export class FormularioLoginComponent {
-  email: string;
-  password: string;
+export class FormularioLoginComponent implements OnInit {
+  loginForm:any =  FormGroup;
+  passwordFieldType: string = 'password';
 
   constructor(
+    private fb: FormBuilder,
     private authService: LoginService, 
     private router: Router,  
     private sendCode: SendCodeService, 
     private codeService: CodeServiceService) 
-    {  // Inyecta el servicio
-    this.email = '';
-    this.password = '';
+  { }
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 
   async sendValuesLogin(): Promise<void> {
+    if (this.loginForm.invalid) {
+      // Muestra los mensajes de error
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+
+    const { email, password } = this.loginForm.value;
+
     try {
-      const data = await this.authService.login(this.email, this.password);
+      const data = await this.authService.login(email, password);
       this.showSuccessMessage();
 
       // Generar código de 6 cifras
       const code = this.generateCode();
       // localStorage.setItem('generatedCode', code);
-      this.codeService.setGeneratedCode(code, this.email);
+      this.codeService.setGeneratedCode(code, email);
       
-
       this.router.navigate(['/verifyCode']);
     } catch (error) {
       console.error('Error al intentar logear', error);
@@ -43,15 +60,15 @@ export class FormularioLoginComponent {
   }
 
   async verifyAndSendCode(): Promise<void> {
-      try {
-        const generateCode = this.codeService.getGeneratedCode();
-        const response = await this.sendCode.sendLoginRequest(this.email, generateCode);
+    try {
+      const generateCode = this.codeService.getGeneratedCode();
+      const response = await this.sendCode.sendLoginRequest(this.loginForm.value.email, generateCode);
 
-        console.log('Login Request:', response);
-      } catch (error) {
-        console.error('Error al enviar solicitud de login', error);
-      }
-    } 
+      console.log('Login Request:', response);
+    } catch (error) {
+      console.error('Error al enviar solicitud de login', error);
+    }
+  }
 
   private showSuccessMessage(): void {
     Swal.fire({
@@ -73,8 +90,8 @@ export class FormularioLoginComponent {
       confirmButtonText: "Intentar de nuevo",
       cancelButtonText: "Registrarse",
     }).then((res) => {
-      if(res.isDismissed){
-        this.router.navigate(['/singup'])
+      if (res.isDismissed) {
+        this.router.navigate(['/singup']);
       }
     });
   }
@@ -83,6 +100,5 @@ export class FormularioLoginComponent {
     // Generar código de 6 cifras
     return (Math.floor(100000 + Math.random() * 900000)).toString();
   }
-
-}  
+}
 
