@@ -77,4 +77,7 @@ export class PasswordCreatorComponent {
     this.length = parseInt(event, 10);
     this.generatePassword();
   }
+  goHome(): void {
+    this.router.navigate(['/home']);
+  }
 }
