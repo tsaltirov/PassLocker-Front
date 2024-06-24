@@ -30,10 +30,8 @@ export class CreateCodeComponent {
     try {
       const email = this.codeService.getEmail();
       if (this.generated === '') {
-        console.log('Código generado está vacío');
       } else {
         this.sendCode.sendLoginRequest(email, this.generated).then( response => {
-            console.log('Solicitud de inicio de sesión enviada:', response);
           }, error => {
             console.error('Error en la solicitud de inicio de sesión:', error);
           });

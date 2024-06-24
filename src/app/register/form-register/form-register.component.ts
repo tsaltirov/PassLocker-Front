@@ -80,7 +80,6 @@ export class FormRegisterComponent {
           timer: 2000
         });
       }
-      console.log(response.data);
     } catch (error) {
       console.error('Error al registrar el usuario', error);
       Swal.fire({

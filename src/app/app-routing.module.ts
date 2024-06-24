@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'registerverify',
-    component: RegisterVerifyComponent
+    component: RegisterVerifyComponent, canActivate: [AuthGuard]
   },
   {
     path: 'forgot-password',
@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'reset-password',
-    component: VerifyForgotpasswordComponent
+    component: VerifyForgotpasswordComponent, canActivate: [AuthGuard]
   },
   {
     path: 'verifyCode',

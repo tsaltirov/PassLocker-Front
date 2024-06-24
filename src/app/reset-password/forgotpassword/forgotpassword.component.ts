@@ -47,7 +47,6 @@ export class ForgotpasswordComponent {
         }).then(() => {
           this.router.navigate(['/']); 
         });
-        console.log('Password reset request sent:', response);
       })
       .catch(error => {
         console.error('There was an error!', error);

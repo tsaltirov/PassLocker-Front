@@ -63,8 +63,6 @@ export class FormularioLoginComponent implements OnInit {
     try {
       const generateCode = this.codeService.getGeneratedCode();
       const response = await this.sendCode.sendLoginRequest(this.loginForm.value.email, generateCode);
-
-      console.log('Login Request:', response);
     } catch (error) {
       console.error('Error al enviar solicitud de login', error);
     }
