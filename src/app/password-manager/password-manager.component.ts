@@ -14,8 +14,11 @@ import Swal from 'sweetalert2';
 export class PasswordManagerComponent implements OnInit {
 
   passwords: any[] = [];
+  filteredPasswords: any[] = [];
+  searchTerm: string = '';
   passwordFieldType: string = 'password';
   userFullName: string | null = '';  
+  isCollapsed: boolean = false;
 
   constructor(
     private passwordService: PasswordService,
@@ -24,14 +27,20 @@ export class PasswordManagerComponent implements OnInit {
     private deleteService: DeleteService,
   ) {}
 
-  ngOnInit(): void {
-    this.loadPasswords();
-    this.userFullName = this.loginService.getFullName();
-  }
+ async ngOnInit(): Promise<void> {
+
+    try{
+
+      await this.loadPasswords();
+      this.userFullName = this.loginService.getFullName();
+    } catch (err) {
+   
+  }}
 
   async loadPasswords(): Promise<void> {
     try {
       this.passwords = await this.passwordService.getPasswords();
+      this.filteredPasswords = [...this.passwords];
     } catch (error) {
       console.error('Error fetching passwords:', error);
     }
@@ -39,6 +48,10 @@ export class PasswordManagerComponent implements OnInit {
 
   togglePasswordVisibility(index: number): void {
     this.passwords[index].isPasswordVisible = !this.passwords[index].isPasswordVisible;
+  }
+
+  toggleSidenav(): void {
+    this.isCollapsed = !this.isCollapsed;
   }
 
   addPassword(): void {
@@ -100,7 +113,14 @@ export class PasswordManagerComponent implements OnInit {
   logout(): void {
     localStorage.clear();
     this.router.navigate(['/']).then(() => {
-      window.location.reload(); // Fuerza la recarga de la página
+      window.location.reload(); 
     });
+  }
+
+  onSearchTermChange(): void {
+    this.filteredPasswords = this.passwords.filter(password =>
+      password.userService.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      password.userName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 }

@@ -5,7 +5,8 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modify-password',
-  templateUrl: './modify-password.component.html'
+  templateUrl: './modify-password.component.html',
+  styleUrls: ['./modify-password.component.css'],
 })
 export class ModifyPasswordComponent implements OnInit {
   id: string = '';
@@ -43,13 +44,21 @@ export class ModifyPasswordComponent implements OnInit {
         );
         this.router.navigate(['/home']);
       } catch (error) {
-        console.error('Error updating password:', error);
+        console.error('Error actualizando la contraseña:', error);
         Swal.fire(
           'Error',
           'Hubo un problema al modificar la contraseña.',
           'error'
         );
-      }
+      
     }
+    
+
   }
 }
+cancel() {
+    
+ 
+  this.router.navigate(['/home']);
+
+}}
