@@ -75,7 +75,8 @@ export class FormRegisterComponent {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Correo Enviado con éxito!',
+          title: 'Correo enviado con éxito!',
+          text: 'Por favor, revisa tu correo electrónico.',
           showConfirmButton: false,
           timer: 2000
         });
