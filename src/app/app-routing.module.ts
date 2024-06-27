@@ -11,6 +11,8 @@ import { PasswordManagerComponent } from './password-manager/password-manager.co
 import { ModifyPasswordComponent } from './modify-password/modify-password.component';
 import { AuthGuard } from './guard/auth/auth.guard';
 import { FormularioLoginComponent } from './login/formulario-login/formulario-login.component';
+import { CodeUsedGuard } from './guard/auth/code-used-guard.guard';
+import { PasswordResetGuard } from './guard/auth/pasword-reset.guard';
 
 
 const routes: Routes = [
@@ -32,11 +34,11 @@ const routes: Routes = [
   },
   {
     path: 'reset-password',
-    component: VerifyForgotpasswordComponent, canActivate: [AuthGuard]
+    component: VerifyForgotpasswordComponent, canActivate: [AuthGuard, PasswordResetGuard]
   },
   {
     path: 'verifyCode',
-    component: CreateCodeComponent, canActivate: [AuthGuard]
+    component: CreateCodeComponent, canActivate: [AuthGuard, CodeUsedGuard]
   },
   {
     path: 'createPassword',

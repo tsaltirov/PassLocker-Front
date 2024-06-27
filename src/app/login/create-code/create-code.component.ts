@@ -59,6 +59,7 @@ export class CreateCodeComponent {
       });
       localStorage.setItem('generatedCode', this.generated);
       this.router.navigate(['./home']);
+      localStorage.removeItem('generatedCode')
     } else {
       Swal.fire({
         icon: "error",
