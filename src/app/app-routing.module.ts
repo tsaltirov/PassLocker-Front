@@ -34,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'reset-password',
-    component: VerifyForgotpasswordComponent, canActivate: [AuthGuard, PasswordResetGuard]
+    component: VerifyForgotpasswordComponent, canActivate: [AuthGuard]
   },
   {
     path: 'verifyCode',
@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'createPassword',
-    component: PasswordCreatorComponent, canActivate: [AuthGuard]
+    component: PasswordCreatorComponent, canActivate: [AuthGuard ]
   },
   {
     path: 'home',

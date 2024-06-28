@@ -56,10 +56,11 @@ export class CreateCodeComponent {
         showDenyButton: false,
         showCancelButton: false,
         confirmButtonText: "OK",
+      }).then(() => {
+        localStorage.setItem('codeUsed', 'true'); // Marcar el código como usado
+        localStorage.removeItem('generatedCode'); // Eliminar el código de localStorage
+        this.router.navigate(['/home']);
       });
-      localStorage.setItem('generatedCode', this.generated);
-      this.router.navigate(['./home']);
-      localStorage.removeItem('generatedCode')
     } else {
       Swal.fire({
         icon: "error",
