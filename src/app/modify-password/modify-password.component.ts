@@ -13,6 +13,7 @@ export class ModifyPasswordComponent implements OnInit {
 
   id: string = '';
   modifyPasswordForm: FormGroup;
+  passwordFieldType: string = 'password';
 
   constructor(
     private route: ActivatedRoute,
@@ -28,10 +29,32 @@ export class ModifyPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(async params => {
       this.id = params.get('id') || '';
+      if (this.id) {
+        await this.loadPasswordDetails(this.id);
+      }
     });
   }
+
+  async loadPasswordDetails(id: string) {
+    try {
+      const passwordDetails = await this.modifyService.getPasswordById(id);
+      this.modifyPasswordForm.patchValue({
+        nombreDelServicio: passwordDetails.userService,
+        nombreDelUsuario: passwordDetails.userName,
+        nueva: passwordDetails.password
+      });
+    } catch (error) {
+      console.error('Error fetching password details:', error);
+      Swal.fire(
+        'Error',
+        'Hubo un problema al cargar los detalles de la contraseña.',
+        'error'
+      );
+    }
+  }
+
 
   async modifyPassword() {
     if (this.modifyPasswordForm.valid) {
@@ -72,6 +95,10 @@ export class ModifyPasswordComponent implements OnInit {
         'error'
       );
     }
+  }
+
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 
   cancel() {

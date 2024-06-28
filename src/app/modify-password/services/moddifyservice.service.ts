@@ -13,6 +13,25 @@ export class ModdifyserviceService {
   constructor(private authService: LoginService) { }
 
 
+  async getPasswordById(id: string): Promise<any> {
+    const token = this.authService.getToken();
+    if (!token) {
+      throw new Error('No token available');
+    }
+
+    const url = `${this.apiUrl}/${id}`;
+
+    try {
+      const response = await axios.get(url, { headers: { 'Authorization': `Bearer ${token}` } });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching password:', error);
+      throw error;
+    }
+  }
+
+
+
   async modifyPassword(id: string, userService: string, userName: string, password: string): Promise<void> {
     const token = this.authService.getToken();
     if (!token) {
